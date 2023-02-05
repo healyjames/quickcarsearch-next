@@ -15,15 +15,15 @@ export default function Header(props) {
 						style={{width: '75px', height: 'auto'}}
 					/>
 					</a>
-					{/* <div className={styles.menu_container}>
+					<div className={styles.menu_container}>
 					<Image
-						src={"/assets/logo/" + props.logo}
+						src={"/assets/logo/" + props.acronym}
 						alt="Picture of the author"
-						width="60px"
-						height="50px"
+						width="60"
+						height="50"
 						style={{width: '75px', height: 'auto'}}
 					/>
-					</div> */}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import '../../styles/brand';
 @import '../../styles/mixins';
 
@@ -38,6 +40,10 @@
 
 .submit_btn {
     @include button(100%);
+}
+
+.budget {
+    margin-bottom: math.div($core-margin, 2);
 }
 
 .currency {
