@@ -24,16 +24,14 @@
 }
 
 @include md($core-breakpoint-md) {
-    #home {
-        .header_container_inner {
-            flex-direction: row;
-        }
-        .menu_container {
-            margin-top: 0;
-        }
+    .header_container_inner {
+        flex-direction: row;
     }
-    #results {
-        padding-top: ($core-padding * 2);
+    .menu_container {
+        margin-top: 0;
     }
+    // #results {
+    //     padding-top: ($core-padding * 2);
+    // }
 }
 

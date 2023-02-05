@@ -54,6 +54,6 @@
 
 @include lg($core-breakpoint-lg) {
   .home {
-      grid-template-columns: 55% 45%;
+      grid-template-columns: 40% 60%;
   }
 }

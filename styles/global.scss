@@ -29,6 +29,10 @@ label {
     margin-bottom: ($core-margin / 2);
 }
 
+#__next {
+    max-width: 1600px;
+}
+
 .sr-only {
     position: absolute;
     left: -10000px;
