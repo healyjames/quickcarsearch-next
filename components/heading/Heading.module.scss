@@ -1,0 +1,21 @@
+@import '../../styles/brand';
+@import '../../styles/mixins';
+
+/* Heading Styling */
+.heading {
+    text-align: left;
+    margin-top: 0;
+    font-size: ($core-font-size * 1.5);
+    letter-spacing: -1px;
+    font-weight: 400;
+    span {
+        font-weight: 700;
+    }
+}
+
+.subheading {
+    font-size: $core-font-size;
+    font-weight: 400;
+    margin-bottom: ($core-margin * 2.5);
+    color: $core-color-neutral;
+}

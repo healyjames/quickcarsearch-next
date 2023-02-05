@@ -1,0 +1,44 @@
+@import '../styles/brand';
+@import '../styles/mixins';
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, button, legend, input, li, td, th, span, div {
+    font-family: $core-font-family;
+    color: $core-color-foreground;
+}
+
+form > fieldset {
+    border: none;
+    padding: 0;
+}
+
+header {
+    padding: ($core-padding * 1.2);
+    margin-bottom: $core-margin;
+}
+
+label {
+    margin-bottom: ($core-margin / 2);
+}
+
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.back-btn {
+    margin-bottom: $core-margin;
+    border-bottom: 1px $core-border-style $core-color-foreground;
+}

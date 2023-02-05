@@ -1,0 +1,39 @@
+@import '../../styles/brand';
+@import '../../styles/mixins';
+
+/* Header Styling */
+.header_container_inner {
+    @include flex(column, space-between, center);
+}
+
+.menu_container {
+    @include flex(row, flex-end, normal);
+    grid-gap: $core-grid-gap;
+    padding: 0 ($core-padding * 1.25);
+    margin-top: $core-margin;
+}
+
+.menu_container a {
+    @include transition(padding, .2s, ease-in-out);
+    border-bottom: $core-border-width $core-border-style $core-color-foreground;
+    text-decoration: none;
+}
+
+.menu_container a:hover {
+    padding: 0 .5em;
+}
+
+@include md($core-breakpoint-md) {
+    #home {
+        .header_container_inner {
+            flex-direction: row;
+        }
+        .menu_container {
+            margin-top: 0;
+        }
+    }
+    #results {
+        padding-top: ($core-padding * 2);
+    }
+}
+

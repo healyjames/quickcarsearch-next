@@ -1,0 +1,45 @@
+@import '../../styles/brand';
+@import '../../styles/mixins';
+
+/* Image Container Styling */
+.image_container_inner {
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.image_container_inner picture img {
+    width: 100%;
+    height: 100%;
+}
+
+.image_tag a p span {
+    color: $core-color-background;
+    border-bottom: $core-border-width $core-border-style $core-color-background;
+}
+
+.image_tag a p i {
+    position: relative;
+    top: 4px;
+    color: $core-color-background;
+    font-size: $core-font-size;
+    margin-right: 5px;
+}
+
+.image_tag a p {
+    opacity: 0.5;
+}
+
+.image_tag a {
+    text-decoration: none;
+}
+
+.image_tag {
+    position: absolute;
+    right: 1em;
+}
+
+@include lg($core-breakpoint-lg) {
+    .image-+_tag {
+        bottom: 1em;
+    }
+}
