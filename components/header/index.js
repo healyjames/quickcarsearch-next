@@ -10,8 +10,8 @@ export default function Header(props) {
 					<Image
 						src={"/assets/logo/" + props.logo}
 						alt="Picture of the author"
-						width="60px"
-						height="50px"
+						width="60"
+						height="50"
 						style={{width: '75px', height: 'auto'}}
 					/>
 					</a>
