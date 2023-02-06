@@ -37,12 +37,11 @@
 
 .image_tag {
     position: absolute;
-    right: 1em;
-    top: 0.5em;
 }
 
-@include lg($core-breakpoint-lg) {
-    .image-+_tag {
-        bottom: 1em;
+@include media($core-breakpoint-lg) {
+    .image_tag {
+        right: 1em;
+        top: 0.5em;
     }
 }

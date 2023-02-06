@@ -23,12 +23,14 @@
     padding: 0 .5em;
 }
 
-@include md($core-breakpoint-md) {
-    .header_container_inner {
-        flex-direction: row;
-    }
-    .menu_container {
-        margin-top: 0;
+@include media($core-breakpoint-md) {
+    #home {
+        .header_container_inner {
+            flex-direction: row;
+        }
+        .menu_container {
+            margin-top: 0;
+        }
     }
     // #results {
     //     padding-top: ($core-padding * 2);

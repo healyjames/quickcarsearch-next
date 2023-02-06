@@ -56,30 +56,9 @@
 }
 
 // Small devices
-@mixin sm($size) {
-    @media (min-width: '#{$size}px') {
+@mixin media($size) {
+    @media (min-width: $size) {
         @content;
     }
- }
-
-// Medium devices
-@mixin md($size) {
-    @media (min-width: '#{$size}px') {
-        @content;
-    }
- }
- 
- // Large devices
- @mixin lg($size) {
-    @media (min-width: '#{$size}px') {
-        @content;
-    }
- }
- 
- // Extra large devices
- @mixin xl($size) {
-    @media (min-width: '#{$size}px') {
-        @content;
-    }
- }
+}
  

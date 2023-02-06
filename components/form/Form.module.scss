@@ -54,7 +54,7 @@
     font-size: $core-font-size;
 }
 
-@include lg($core-breakpoint-lg) {
+@include media($core-breakpoint-lg) {
     .form_container_inner {
         padding: ($core-padding * 1.25);
     }
