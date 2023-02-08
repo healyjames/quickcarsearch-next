@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Header(props) {
 	return(
-		<div id={props.id}>
+		<div id={styles.home}>
 			<div>
 				<div className={styles.header_container_inner}>
 					<a href="/" className={styles.logo_container} tabIndex="-1">

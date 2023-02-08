@@ -19,6 +19,8 @@
   width: 100%;
   padding: $core-padding ($core-padding * 2) ($core-padding * 2.5) ($core-padding * 2);
   border-radius: $core-border-radius;
+  max-width: 550px;
+  margin: 0 auto;
 }
 
 .form_item ~ .form_item {
@@ -46,14 +48,17 @@
   @include button(100%);
 }
 
-@include media($core-breakpoint-xl) {
-  .home {
-      grid-template-columns: 50% 50%;
-  }
-}
-
 @include media($core-breakpoint-lg) {
   .home {
       grid-template-columns: 40% 60%;
+  }
+  .form_container_inner {
+    padding: $core-padding ($core-padding * 6);
+  }
+}
+
+@include media($core-breakpoint-xl) {
+  .home {
+      grid-template-columns: 50% 50%;
   }
 }
