@@ -12,6 +12,19 @@
     object-fit: cover;
 }
 
+.image_container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: $core-breakpoint-md;
+
+    img {
+        object-fit: cover;
+        overflow: hidden;
+    }
+}
+
 .image_tag a p span {
     color: $core-color-background;
     border-bottom: $core-border-width $core-border-style $core-color-background;

@@ -1,4 +1,5 @@
 import styles from './FeatureImage.module.scss'
+import Image from 'next/image'
 
 export default function FeatureImage() {
     return(
@@ -12,10 +13,12 @@ export default function FeatureImage() {
                 </div>
 
                 <div className={styles.image_container}>
-                    <picture>
-                        <source srcSet="/assets/images/home-image.webp" alt="Orange Lambourghini Huracan parked on the street" type="image/webp" />
-                        <img src="/assets/images/home-image.jpg" decoding="async" alt="Orange Lambourghini Huracan parked on the street" width="500" height="500" />
-                    </picture>
+                    <Image  src="/assets/images/home-image.jpg" 
+                        fill //need to remove inline position: absolute that is generated
+                        size="(max-width: 979px) 100vw,
+                            (min-width: 1200px) 50vw"
+                        decoding="async" 
+                        alt="Orange Lambourghini Huracan parked on the street" />
                 </div>
 
             </div>
