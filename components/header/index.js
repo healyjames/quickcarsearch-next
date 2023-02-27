@@ -15,7 +15,7 @@ export default function Header(props) {
 						style={{width: '75px', height: 'auto'}}
 					/>
 					</a>
-					<div className={styles.menu_container}>
+					<div className={styles.acronym_container}>
 					<Image
 						src={"/assets/logo/" + props.acronym}
 						alt="Picture of the author"

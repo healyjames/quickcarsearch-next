@@ -56,9 +56,3 @@
     padding: $core-padding ($core-padding * 6);
   }
 }
-
-@include media($core-breakpoint-xl) {
-  .home {
-      grid-template-columns: 50% 50%;
-  }
-}
