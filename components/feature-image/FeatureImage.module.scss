@@ -49,5 +49,7 @@
         height: 100vh;
         max-height: 900px;
         overflow: hidden;
+        border-top-left-radius: $core-border-radius;
+        border-bottom-left-radius: $core-border-radius;
     }
 }

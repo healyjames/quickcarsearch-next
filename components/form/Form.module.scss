@@ -22,7 +22,7 @@
 }
 
 .form_input_item input[type=text] {
-    border: $core-border-width $core-border-style $core-color-neutral-light;
+    border: $core-border-width $core-border-style $core-color-foreground;
     border-radius: $core-border-radius;
     box-sizing: border-box;
     padding: $core-padding ($core-padding * 0.75) $core-padding ($core-padding * 1.5);
@@ -35,7 +35,7 @@
 }
 
 .form_input_item input::placeholder {
-    color: $core-color-neutral-light;
+    color: $core-color-neutral;
 }
 
 .submit_btn {
@@ -50,7 +50,7 @@
     position: absolute;
     margin-top: 21px;
     margin-left: 10px;
-    color: #CCC;
+    color: $core-color-foreground;
     font-size: $core-font-size;
 }
 

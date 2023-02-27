@@ -22,7 +22,7 @@ const Home = () => (
     <main className={styles.home}>
       <div className={styles.form_container_outer}>
         <div className={styles.form_container_inner}>
-          <Header id="home" logo="logo-icon.svg" acronym="logo-acronym.svg" />
+          <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
           <Heading />
           <Form />
           <HorizontalAd />
