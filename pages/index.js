@@ -14,7 +14,7 @@ const Home = () => (
 			<meta name="description" content="QuickCarSearch - The platform that makes it easy to find your next sports car, super car or performance car, all within your budget. Convinient and totally free." property="og:title" key="title" />
 			<meta charSet="utf-8" property="og:charset" key="charset" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" property="og:edge" key="edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0" property="og:viewport" key="viewport" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0,user-scalable=yes" property="og:viewport" key="viewport" />
       <meta name="mobile-web-app-capable" content="yes" property="og:mobile_webapp" key="mobile_webapp" />
       <meta name="apple-mobile-web-app-capable" content="yes" property="og:apple_webapp" key="apple_webapp" />
 		</Head>

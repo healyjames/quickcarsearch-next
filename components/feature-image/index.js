@@ -14,7 +14,8 @@ export default function FeatureImage() {
 
                 <div className={styles.image_container}>
                     <Image  src="/assets/images/home-image.jpg" 
-                        fill //need to remove inline position: absolute that is generated
+                        fill
+                        loading="eager"
                         size="(max-width: 979px) 100vw,
                             (min-width: 1200px) 50vw"
                         decoding="async" 
