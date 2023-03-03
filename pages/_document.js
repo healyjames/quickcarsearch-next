@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 export default function Document() {
     return (
@@ -10,7 +11,7 @@ export default function Document() {
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&display=swap" media="print" onLoad="this.media='all'" />
             <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&display=swap" rel="stylesheet" />
             <link rel="icon" type="image/png" href="/assets/logo/logo-icon-circle-orange.svg"/>
-            <script src="https://kit.fontawesome.com/75a401b8c1.js" crossOrigin="true"></script>
+            <Script src="https://kit.fontawesome.com/75a401b8c1.js" crossOrigin="true" />
         </Head>
         <body>
           <Main />

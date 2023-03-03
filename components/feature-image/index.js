@@ -15,6 +15,7 @@ export default function FeatureImage() {
                 <div className={styles.image_container}>
                     <Image  src="/assets/images/home-image.jpg" 
                         fill
+                        priority
                         loading="eager"
                         size="(max-width: 979px) 100vw,
                             (min-width: 1200px) 50vw"
