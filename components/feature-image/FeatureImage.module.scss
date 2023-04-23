@@ -26,14 +26,14 @@
 }
 
 .image_tag a p span {
-    color: $core-color-background;
-    border-bottom: $core-border-width $core-border-style $core-color-background;
+    color: $core-color-foreground;
+    border-bottom: $core-border-width $core-border-style $core-color-foreground;
 }
 
 .image_tag a p i {
     position: relative;
     top: 4px;
-    color: $core-color-background;
+    color: $core-color-foreground;
     font-size: $core-font-size;
     margin-right: 5px;
 }
@@ -47,6 +47,7 @@
 }
 
 .image_tag {
+    z-index: 1;
     position: absolute;
     left: 0.5em;
 }
