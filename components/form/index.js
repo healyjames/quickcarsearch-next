@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from './Form.module.scss'
 import FormItem from './formItem/index'
 import FormSubmit from './FormSubmit/index'
@@ -9,6 +10,7 @@ export default function Form() {
     const [budget, setBudget] = useState('');
     const [cars, setCars] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,7 +21,8 @@ export default function Form() {
                 const filteredCars = data.results.filter((car) => car.avg_price <= budget);
                 setCars(filteredCars);
                 setIsLoading(false);
-            }, Math.floor(Math.random() * (1500 - 500 + 1) + 500))
+                router.push("/results")
+            }, Math.floor(Math.random() * (2000 - 1000 + 1) + 500))
 
         } catch (error) {
             console.error(error);
@@ -36,17 +39,7 @@ export default function Form() {
                 </fieldset>
             </form>
 
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <ul>
-                    {cars.map((car, index) => (
-                        <li key={index}>
-                            {car.make} {car.model} (£{car.avg_price})
-                        </li>
-                    ))}
-                </ul>
-            )}
+            {isLoading && <Loading />}
 
         </>
         
