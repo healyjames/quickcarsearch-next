@@ -36,14 +36,14 @@ export default function Form() {
             </form>
 
             {isLoading ? (
-                    <div>Loading...</div>
-                ) : (
+                <div>Loading...</div>
+            ) : (
                 <ul>
-                {cars.map((car, index) => (
-                <li key={index}>
-                    {car.make} {car.model} (${car.price})
-                </li>
-                ))}
+                    {cars.map((car, index) => (
+                        <li key={index}>
+                            {car.make} {car.model} (£{car.avg_price})
+                        </li>
+                    ))}
                 </ul>
             )}
 
