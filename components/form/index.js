@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './Form.module.scss'
 import FormItem from './formItem/index'
 import FormSubmit from './FormSubmit/index'
+import Loading from '../loading';
 import data from '../../data.json'
 
 export default function Form() {
@@ -31,12 +32,12 @@ export default function Form() {
                 <fieldset>
                     <legend className={"sr-only"}>Description</legend>
                     <FormItem styles={styles} budget={budget} setBudget={setBudget} />
-                    <FormSubmit styles={styles} />
+                    <FormSubmit styles={styles}/>
                 </fieldset>
             </form>
 
             {isLoading ? (
-                <div>Loading...</div>
+                <Loading />
             ) : (
                 <ul>
                     {cars.map((car, index) => (
