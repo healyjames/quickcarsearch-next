@@ -14,19 +14,15 @@ export default function Form() {
         setIsLoading(true);
 
         try {
-            // const response = await fetch('../../data.json');
-            // const data = await response.json();
-
             setTimeout(() => {
                 const filteredCars = data.results.filter((car) => car.avg_price <= budget);
                 setCars(filteredCars);
                 setIsLoading(false);
-            }, 1000)
+            }, Math.floor(Math.random() * (1500 - 500 + 1) + 500))
 
         } catch (error) {
             console.error(error);
         }
-        // setIsLoading(false);
     };
 
     return(
