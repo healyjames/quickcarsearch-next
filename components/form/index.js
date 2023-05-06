@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux'
+import { fetchData } from '../../redux/actions/fetchData';
 import styles from './Form.module.scss'
 import FormItem from './formItem/index'
 import FormSubmit from './FormSubmit/index'
@@ -11,6 +13,7 @@ export default function Form() {
     const [cars, setCars] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const dispatch = useDispatch()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -21,6 +24,7 @@ export default function Form() {
                 const filteredCars = data.results.filter((car) => car.avg_price <= budget);
                 setCars(filteredCars);
                 setIsLoading(false);
+                dispatch(fetchData(filteredCars))
                 router.push("/results")
             }, Math.floor(Math.random() * (2000 - 1000 + 1) + 500))
 
