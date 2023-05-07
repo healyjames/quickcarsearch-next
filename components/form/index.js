@@ -23,10 +23,10 @@ export default function Form() {
             setTimeout(() => {
                 const filteredCars = data.results.filter((car) => car.avg_price <= budget);
                 setCars(filteredCars);
-                setIsLoading(false);
                 dispatch(fetchData(filteredCars))
                 router.push("/results")
-            }, Math.floor(Math.random() * (2000 - 1000 + 1) + 500))
+                setIsLoading(false);
+            }, Math.floor(Math.random() * (1200 - 400 + 1) + 500))
 
         } catch (error) {
             console.error(error);
