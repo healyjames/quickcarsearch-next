@@ -1,0 +1,12 @@
+@import '../../styles/brand';
+@import '../../styles/mixins';
+
+.layout {
+    padding: $core-padding ($core-padding * 2) ($core-padding * 2.5) ($core-padding * 2);
+}
+
+@include media($core-breakpoint-lg) {
+    .home {
+        padding: $core-padding ($core-padding * 6);
+    }
+}

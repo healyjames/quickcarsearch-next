@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux'
 
+import { Layout } from '../components/layout';
 import Header from '../components/header'
 
 const ResultsPage = () => {
@@ -33,7 +34,7 @@ const ResultsPage = () => {
     }, [timer, data])
 
     return (
-        <div>
+        <Layout>
             <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
             {data && data.data ? (
                 <ul>
@@ -49,7 +50,7 @@ const ResultsPage = () => {
                     <p>Redirecting to homepage in {timer} seconds</p>
                 </>
             )}
-        </div>
+        </Layout>
     )
 }
 
