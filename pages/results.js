@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux'
 
-import { Layout } from '../components/layout';
+import { Layout } from '../components/layout/Layout';
 import { Header } from '../components/header/Header';
 
 const ResultsPage = () => {

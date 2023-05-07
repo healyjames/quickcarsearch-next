@@ -1,6 +1,6 @@
 import styles from './Heading.module.scss'
 
-export default function Heading() {
+export const Heading = () => {
     return(
         <div className={styles.heading_container}>
             <h1 className={styles.heading}>Find your next performance car <span>the easy way.</span></h1>
