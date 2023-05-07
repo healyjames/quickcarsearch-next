@@ -1,6 +1,6 @@
 import styles from './Loading.module.scss'
 
-export default function Loading() {
+export const Loading = () => {
     return(
         <div className={styles.loading_container_outer}>
             <div className={styles.loading_container_inner}>

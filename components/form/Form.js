@@ -5,12 +5,12 @@ import { fetchData } from '../../redux/actions/fetchData';
 
 import { FormItem } from './formItem/FormItem';
 import { FormSubmit } from './formSubmit/FormSubmit'
-import Loading from '../loading';
+import { Loading } from '../loading/Loading';
 
 import data from '../../data.json'
 import styles from './Form.module.scss'
 
-export default function Form() {
+export const Form = () => {
     const [budget, setBudget] = useState('');
     const [cars, setCars] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
