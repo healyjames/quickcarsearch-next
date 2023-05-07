@@ -5,25 +5,32 @@ import { useSelector } from 'react-redux'
 import Header from '../components/header'
 
 const ResultsPage = () => {
+
+    // Use the 'useSelector' hook to get the data from Redux store
     const data = useSelector((state) => state.data)
-    const [timer, setTimer] = useState(5);
-    const router = useRouter();
+
+    // Define state variables for timer and router
+    const router = useRouter()
+    const [timer, setTimer] = useState(5)
 
     useEffect(() => {
+        // Create a countdown interval that decrements the timer state every 1 second
         const countdown = setInterval(() => {
-            setTimer((prev) => prev - 1);
+            setTimer((prev) => prev - 1)
         }, 1000);
     
+        // Return a cleanup function that clears the interval when the component is unmounted
         return () => {
-            clearInterval(countdown);
+            clearInterval(countdown)
         };
     }, []);
-    
-        useEffect(() => {
-            if (timer === 0 && !data?.data) {
-                router.push('/');
-            }
-        }, [timer, data]);
+
+    // Implement the redirect effect
+    useEffect(() => {
+        if (timer === 0 && !data?.data) {
+            router.push('/')
+        }
+    }, [timer, data])
 
     return (
         <>
