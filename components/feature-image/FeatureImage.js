@@ -1,5 +1,6 @@
-import styles from './FeatureImage.module.scss'
 import Image from 'next/image'
+
+import styles from './FeatureImage.module.scss'
 
 export const FeatureImage = () => {
     return(
