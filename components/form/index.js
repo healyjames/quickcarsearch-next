@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux'
 import { fetchData } from '../../redux/actions/fetchData';
-import styles from './Form.module.scss'
-import FormItem from './formItem/index'
-import FormSubmit from './FormSubmit/index'
+
+import { FormItem } from './formItem/FormItem';
+import { FormSubmit } from './formSubmit/FormSubmit'
 import Loading from '../loading';
+
 import data from '../../data.json'
+import styles from './Form.module.scss'
 
 export default function Form() {
     const [budget, setBudget] = useState('');

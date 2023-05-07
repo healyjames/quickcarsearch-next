@@ -1,4 +1,4 @@
-export default function FormItem(props) {
+export const FormItem = (props) => {
     return(
         <div className={props.styles.form_item}>
             <label className={props.styles.budget} htmlFor="budget">What's your budget?</label>
