@@ -20,10 +20,10 @@ const ResultsPage = () => {
     }, []);
     
         useEffect(() => {
-            if (timer === 0) {
+            if (timer === 0 && !data?.data) {
                 router.push('/');
             }
-        }, [timer]);
+        }, [timer, data]);
 
     return (
         <>
