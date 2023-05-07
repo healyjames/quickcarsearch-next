@@ -12,7 +12,6 @@ import styles from './Form.module.scss'
 
 export const Form = () => {
     const [budget, setBudget] = useState('');
-    const [cars, setCars] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const dispatch = useDispatch()
@@ -24,8 +23,8 @@ export const Form = () => {
         try {
             setTimeout(() => {
                 const filteredCars = data.results.filter((car) => car.avg_price <= budget);
-                setCars(filteredCars);
                 dispatch(fetchData(filteredCars))
+                
                 router.push("/results")
                 setIsLoading(false);
             }, Math.floor(Math.random() * (1200 - 400 + 1) + 500))
