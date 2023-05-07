@@ -1,6 +1,6 @@
 // import Home from "../components/app";
 import Head from "next/head"
-import { Header } from "../components/header"
+import { Header } from "../components/header/Header"
 import Heading from '../components/heading'
 import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
