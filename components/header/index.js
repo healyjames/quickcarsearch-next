@@ -1,7 +1,8 @@
-import styles from './Header.module.scss'
 import Image from 'next/image'
 
-export default function Header(props) {
+import styles from './Header.module.scss'
+
+export const Header = (props) => {
 	return(
 		<div id={styles.home}>
 			<div>
