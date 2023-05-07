@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux'
 
 import { Layout } from '../components/layout/Layout';
+import { Main } from '../components/layout/Main';
 import { Header } from '../components/header/Header';
 
 const ResultsPage = () => {
@@ -34,23 +35,25 @@ const ResultsPage = () => {
     }, [timer, data])
 
     return (
-        <Layout>
-            <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
-            {data && data.data ? (
-                <ul>
-                    {data.data.map((car, index) => (
-                        <li key={index}>
-                        {car.make} {car.model} (£{car.avg_price})
-                        </li>
-                    ))}
-                </ul>
-                ) : (
-                <>
-                    <p>No data found</p>
-                    <p>Redirecting to homepage in {timer} seconds</p>
-                </>
-            )}
-        </Layout>
+        <Main page={"results"}>
+            <Layout>
+                <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+                {data && data.data ? (
+                    <ul>
+                        {data.data.map((car, index) => (
+                            <li key={index}>
+                            {car.make} {car.model} (£{car.avg_price})
+                            </li>
+                        ))}
+                    </ul>
+                    ) : (
+                    <>
+                        <p>No data found</p>
+                        <p>Redirecting to homepage in {timer} seconds</p>
+                    </>
+                )}
+            </Layout>
+        </Main>
     )
 }
 

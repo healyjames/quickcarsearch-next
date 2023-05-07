@@ -2,8 +2,8 @@ import styles from './Layout.module.scss'
 
 export const Layout = (props) => {
     return(
-        <main className={styles.layout}>
+        <div className={styles.layout}>
             {props.children}
-        </main>
+        </div>
     )
 }
