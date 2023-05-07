@@ -33,23 +33,23 @@ const ResultsPage = () => {
     }, [timer, data])
 
     return (
-        <>
+        <div>
             <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
-            <ul>
             {data && data.data ? (
-                data.data.map((car, index) => (
-                    <li key={index}>
-                    {car.make} {car.model} (£{car.avg_price})
-                    </li>
-                ))
+                <ul>
+                    {data.data.map((car, index) => (
+                        <li key={index}>
+                        {car.make} {car.model} (£{car.avg_price})
+                        </li>
+                    ))}
+                </ul>
                 ) : (
                 <>
                     <p>No data found</p>
                     <p>Redirecting to homepage in {timer} seconds</p>
                 </>
             )}
-            </ul>
-        </>
+        </div>
     )
 }
 

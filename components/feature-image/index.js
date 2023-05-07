@@ -17,7 +17,7 @@ export default function FeatureImage() {
                         fill
                         priority
                         loading="eager"
-                        size="(max-width: 979px) 100vw,
+                        sizes="(max-width: 979px) 100vw,
                             (min-width: 1200px) 50vw"
                         decoding="async" 
                         alt="Orange Lambourghini Huracan parked on the street" />
