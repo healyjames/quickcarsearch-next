@@ -1,7 +1,7 @@
 import styles from './FeatureImage.module.scss'
 import Image from 'next/image'
 
-export default function FeatureImage() {
+export const FeatureImage = () => {
     return(
         <div>
             <div className={styles.image_container_inner}>

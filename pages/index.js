@@ -3,9 +3,8 @@ import Head from "next/head"
 import Header from '../components/header'
 import Heading from '../components/heading'
 import Form from '../components/form'
-// import HorizontalAd from '../components/ads'
 import { HorizontalAd } from "../components/ads/HorizontalAd"
-import FeatureImage from '../components/feature-image'
+import { FeatureImage } from "../components/feature-image/FeatureImage"
 import styles from './Home.module.scss'
 
 const Home = () => (
