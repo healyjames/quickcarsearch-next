@@ -5,8 +5,11 @@ import { useSelector } from 'react-redux'
 import { Layout } from '../components/layout/Layout';
 import { Main } from '../components/layout/Main';
 import { Header } from '../components/header/Header';
+import { Heading } from '../components/heading/Heading';
 
-const ResultsPage = () => {
+import headingStyles from '../components/heading/Heading.module.scss'
+
+const ResultsPage = (props) => {
 
     // Use the 'useSelector' hook to get the data from Redux store
     const data = useSelector((state) => state.data)
@@ -38,6 +41,11 @@ const ResultsPage = () => {
         <Main page={"results"}>
             <Layout>
                 <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+                    <h1 className={headingStyles.heading}>This is what we found</h1>
+                    <h2 className={headingStyles.subheading}>Budget of {props.budget}</h2>
+                <Heading>
+                    
+                </Heading>
                 {data && data.data ? (
                     <ul>
                         {data.data.map((car, index) => (

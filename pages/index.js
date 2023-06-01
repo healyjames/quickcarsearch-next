@@ -6,8 +6,10 @@ import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { Main } from "../components/layout/Main"
+import { Layout } from "../components/layout/Layout"
 
 import styles from './Home.module.scss'
+import headingStyles from '../components/heading/Heading.module.scss'
 
 const Home = () => (
   <>
@@ -23,12 +25,15 @@ const Home = () => (
 
     <Main page={"home"}>
       <div className={styles.form_container_outer}>
-        <div className={styles.form_container_inner}>
+        <Layout>
           <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
-          <Heading />
+          <Heading>
+            <h1 className={headingStyles.heading}>Find your next performance car <span>the easy way.</span></h1>
+            <h2 className={headingStyles.subheading}>We make finding your next performance car simple with our easy-to-use, super quick, online search engine.</h2>
+          </Heading>
           <Form />
           <HorizontalAd />
-        </div>
+        </Layout>
       </div>
       <FeatureImage />
     </Main>
