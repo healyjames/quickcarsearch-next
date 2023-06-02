@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import { Layout } from '../components/layout/Layout';
 import { Main } from '../components/layout/Main';
-import { Header } from '../components/header/Header';
+import { SlimHeader } from '../components/header/slim/SlimHeader';
 import { Heading } from '../components/heading/Heading';
 
 import headingStyles from '../components/heading/Heading.module.scss'
@@ -39,13 +39,16 @@ const ResultsPage = (props) => {
 
     return (
         <Main page={"results"}>
+            <SlimHeader id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+                
             <Layout>
-                <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+                <Heading>
                     <h1 className={headingStyles.heading}>This is what we found</h1>
                     <h2 className={headingStyles.subheading}>Budget of {props.budget}</h2>
-                <Heading>
-                    
                 </Heading>
+            </Layout>
+
+            <Layout>
                 {data && data.data ? (
                     <ul>
                         {data.data.map((car, index) => (
