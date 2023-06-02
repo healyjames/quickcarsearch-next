@@ -1,11 +1,23 @@
-import styles from './HorizontalAd.module.scss'
+import styled from 'styled-components';
+
+const StyledAdOuter = styled.div`
+    margin-top: 2em;
+`
+
+const StyledAd = styled.div`
+    background-color: lightgray;
+    height: 100px;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 0.6em;
+`
 
 export const HorizontalAd = () => {
     return(
-        <div className={styles.ad_container_outer}>
-            <div className={styles.ad_container_inner}>
-                <div className={styles.ad}></div>
+        <StyledAdOuter>
+            <div>
+                <StyledAd />
             </div>
-        </div>
+        </StyledAdOuter>
     )
 }
