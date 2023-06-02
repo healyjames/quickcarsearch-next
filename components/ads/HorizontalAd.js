@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-const StyledAdOuter = styled.div`
-    margin-top: 2em;
-`
-
 const StyledAd = styled.div`
     background-color: lightgray;
     height: 100px;
@@ -14,10 +10,12 @@ const StyledAd = styled.div`
 
 export const HorizontalAd = () => {
     return(
-        <StyledAdOuter>
+        <div style={{
+            marginTop: '2em'
+        }}>
             <div>
                 <StyledAd />
             </div>
-        </StyledAdOuter>
+        </div>
     )
 }
