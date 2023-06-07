@@ -23,8 +23,8 @@ const Home = () => (
       <meta name="apple-mobile-web-app-capable" content="yes" property="og:apple_webapp" key="apple_webapp" />
 		</Head>
 
-    <Main page={"home"}>
-      <div className={styles.form_container_outer}>
+    <Main page="home">
+      <div>
         <Layout>
           <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
           <Heading>

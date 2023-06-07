@@ -1,9 +1,24 @@
-import styles from './Layout.module.scss'
+import styled from "styled-components"
+
+const Home = styled.main`
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.lg}px) {
+    grid-template-columns: 40% 60%;
+  }
+`;
 
 export const Main = (props) => {
     return(
-        <main className={styles[`${props.page}`]}>
-            {props.children}
-        </main>
+        props.page === 'home' ?
+            <Home>
+                {props.children}
+            </Home> 
+        :
+            <main>
+                {props.children}
+            </main>
     )
 }

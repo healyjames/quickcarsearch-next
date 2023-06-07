@@ -39,8 +39,8 @@ export const Form = () => {
             <form id="main_form" onSubmit={handleSubmit} method="GET" aria-label="Set your budget">
                 <fieldset>
                     <legend className={"sr-only"}>Description</legend>
-                    <FormItem styles={styles} budget={budget} setBudget={setBudget} />
-                    <FormSubmit styles={styles}/>
+                    <FormItem budget={budget} setBudget={setBudget} />
+                    <FormSubmit />
                 </fieldset>
             </form>
 
