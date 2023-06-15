@@ -6,7 +6,7 @@ import styles from './FeatureImage.module.scss'
 const ImageTag = styled.div`
     z-index: 1;
     position: absolute;
-    left: 0.5em;
+    right: 1rem;
 
     a span {
         color: ${props => props.theme.colors.foreground};

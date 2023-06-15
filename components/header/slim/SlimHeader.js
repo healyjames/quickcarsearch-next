@@ -10,7 +10,7 @@ const HeaderContainerInner = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
-	border-bottom: ${props => `${props.theme.border.width}px ${props.theme.border.style} ${props.theme.colors.neutral.lightest}`};
+	border-bottom: ${props => `${props.theme.border.width}px ${props.theme.border.style} ${props.theme.colors.neutrals.lightest}`};
 	padding-bottom: ${props => props.theme.core.padding}rem;
 	margin-bottom: ${props => (props.theme.core.margin * 2).toFixed(2)}rem;
 `;

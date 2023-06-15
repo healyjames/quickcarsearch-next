@@ -24,8 +24,7 @@ const Home = () => (
 		</Head>
 
     <Main page="home">
-      <div>
-        <Layout>
+      <Layout>
           <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
           <Heading>
             <h1 className={headingStyles.heading}>Find your next performance car <span>the easy way.</span></h1>
@@ -33,8 +32,7 @@ const Home = () => (
           </Heading>
           <Form />
           <HorizontalAd />
-        </Layout>
-      </div>
+      </Layout>
       <FeatureImage />
     </Main>
 	</>

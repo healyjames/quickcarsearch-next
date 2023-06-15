@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const HeaderContainerInner = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: baseline;
 	border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} ${props => props.theme.colors.neutrals.lightest};
 	padding-bottom: ${props => props.theme.core.padding}rem;
