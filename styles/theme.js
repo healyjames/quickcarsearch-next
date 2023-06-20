@@ -77,6 +77,7 @@ export const GlobalStyles = createGlobalStyle`
 
     #__next {
         max-width: ${props => props.theme.core.maxWidth}px;
+        min-height: 100vh;
         margin: 0 auto;
     }
 

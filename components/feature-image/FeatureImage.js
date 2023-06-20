@@ -34,7 +34,6 @@ const FeatureImageContainer = styled.div`
     display: block;
     position: relative;
     width: 100%;
-    height: 100%;
     min-height: ${props => props.theme.breakpoints.md}px;
 
     img {
@@ -45,6 +44,7 @@ const FeatureImageContainer = styled.div`
 
 const FeatureImageContainerOuter = styled.div`
     display: flex;
+    min-height: 100%;
 
     picture img {
         width: 100%;

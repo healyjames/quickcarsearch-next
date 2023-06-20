@@ -3,7 +3,12 @@ import Script from 'next/script'
 
 export default function Document() {
     return (
-      <Html lang="en">
+      <Html 
+        lang="en"
+        style={{
+          minHeight: '100vh'
+        }}
+      >
         <Head>
             <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
@@ -13,7 +18,11 @@ export default function Document() {
             <link rel="icon" type="image/png" href="/assets/logo/logo-icon-circle-orange.svg"/>
             <Script src="https://kit.fontawesome.com/75a401b8c1.js" crossOrigin="true" />
         </Head>
-        <body>
+        <body
+          style={{
+            minHeight: '100vh'
+          }}
+        >
           <Main />
           <NextScript />
         </body>
