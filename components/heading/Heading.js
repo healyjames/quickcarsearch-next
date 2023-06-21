@@ -1,4 +1,3 @@
-import styles from './Heading.module.scss'
 import styled from 'styled-components'
 
 const StyledHeading = styled.h1`
@@ -20,7 +19,7 @@ const StyledSubheading = styled.h3`
 
 export const Heading = (props) => {
     return(
-        <div className={styles.heading_container}>
+        <div>
            {props.children}
         </div>
     )

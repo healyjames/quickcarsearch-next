@@ -7,8 +7,6 @@ import { Main } from '../components/layout/Main';
 import { SlimHeader } from '../components/header/slim/SlimHeader';
 import { Heading } from '../components/heading/Heading';
 
-import headingStyles from '../components/heading/Heading.module.scss'
-
 const ResultsPage = (props) => {
 
     // Use the 'useSelector' hook to get the data from Redux store
@@ -43,8 +41,8 @@ const ResultsPage = (props) => {
                 
             <Layout>
                 <Heading>
-                    <h1 className={headingStyles.heading}>This is what we found</h1>
-                    <h2 className={headingStyles.subheading}>Budget of {props.budget}</h2>
+                    <h1>This is what we found</h1>
+                    <h2>Budget of {props.budget}</h2>
                 </Heading>
             </Layout>
 

@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import styles from './Header.module.scss'
 import styled from 'styled-components'
 
 const HeaderContainerInner = styled.div`

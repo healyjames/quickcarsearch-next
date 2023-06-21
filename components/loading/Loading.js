@@ -1,5 +1,3 @@
-import styles from './Loading.module.scss'
-
 import styled, { keyframes } from 'styled-components'
 
 const LoadingContainerOuter = styled.div`

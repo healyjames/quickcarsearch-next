@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import styled from 'styled-components';
 
-import styles from './FeatureImage.module.scss'
-
 const ImageTag = styled.div`
     z-index: 1;
     position: absolute;

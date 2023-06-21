@@ -2,7 +2,6 @@ import Image from 'next/image'
 
 import { Layout } from '../../layout/Layout'
 
-import styles from './SlimHeader.module.scss'
 import styled from 'styled-components'
 
 
@@ -38,7 +37,7 @@ export const SlimHeader = (props) => {
 			<HomeContainer>
 				<div>
 					<HeaderContainerInner>
-						<a href="/" className={styles.logo_container} tabIndex="-1">
+						<a href="/" tabIndex="-1">
 						<Image
 							src={"/assets/logo/" + props.logo}
 							alt="Picture of the author"

@@ -1,5 +1,3 @@
-// import styles from './Layout.module.scss'
-
 import styled from 'styled-components'
 
 const StyledLayout = styled.div`

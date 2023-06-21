@@ -8,9 +8,6 @@ import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { Main } from "../components/layout/Main"
 import { Layout } from "../components/layout/Layout"
 
-import styles from './Home.module.scss'
-import headingStyles from '../components/heading/Heading.module.scss'
-
 const Home = () => (
   <>
 		<Head>
@@ -27,8 +24,8 @@ const Home = () => (
       <Layout>
           <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
           <Heading>
-            <h1 className={headingStyles.heading}>Find your next performance car <span>the easy way.</span></h1>
-            <h2 className={headingStyles.subheading}>We make finding your next performance car simple with our easy-to-use, super quick, online search engine.</h2>
+            <h1>Find your next performance car <span>the easy way.</span></h1>
+            <h2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine.</h2>
           </Heading>
           <Form />
           <HorizontalAd />

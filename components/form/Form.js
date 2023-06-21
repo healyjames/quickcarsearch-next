@@ -8,7 +8,6 @@ import { FormSubmit } from './formSubmit/FormSubmit'
 import { Loading } from '../loading/Loading';
 
 import data from '../../data.json'
-import styles from './Form.module.scss'
 
 export const Form = () => {
     const [budget, setBudget] = useState('');
