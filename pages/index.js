@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 import { Header } from "../components/header/Header"
-import { Heading } from "../components/heading/Heading"
+import { Heading, HeadingH1, HeadingH2 } from "../components/heading/Heading"
 import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
@@ -24,8 +24,8 @@ const Home = () => (
       <Layout>
           <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
           <Heading>
-            <h1>Find your next performance car <span>the easy way.</span></h1>
-            <h2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine.</h2>
+            <HeadingH1>Find your next performance car <span>the easy way.</span></HeadingH1>
+            <HeadingH2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine.</HeadingH2>
           </Heading>
           <Form />
           <HorizontalAd />

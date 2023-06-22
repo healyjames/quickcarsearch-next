@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledHeading = styled.h1`
+export const HeadingH1 = styled.h1`
     text-align: left;
     font-size: ${props => (props.theme.font.size * 1.5).toFixed(2)}rem;
     letter-spacing: -1px;
@@ -10,7 +10,7 @@ const StyledHeading = styled.h1`
     }
 `
 
-const StyledSubheading = styled.h3`
+export const HeadingH2 = styled.h2`
     font-size: ${props => props.theme.font.size};
     font-weight: 400;
     margin-bottom: ${props => (props.theme.core.margin * 2.5).toFixed(2)};
