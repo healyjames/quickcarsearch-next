@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import React from 'react'
+
+import styled from 'styled-components'
 
 const StyledAd = styled.div`
     background-color: lightgray;
