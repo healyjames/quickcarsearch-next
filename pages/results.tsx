@@ -18,29 +18,8 @@ const ResultsPage = (props: ResultsProps) => {
 
     // Use the 'useSelector' hook to get the data from Redux store
     const data = useSelector((state: RootState) => state.data.data);
-
-    // Define state variables for timer and router
-    const router = useRouter()
-    const [timer, setTimer] = useState(5)
-
-    useEffect(() => {
-        // Create a countdown interval that decrements the timer state every 1 second
-        const countdown = setInterval(() => {
-            setTimer((prev) => prev - 1)
-        }, 1000);
-    
-        // Return a cleanup function that clears the interval when the component is unmounted
-        return () => {
-            clearInterval(countdown)
-        };
-    }, []);
-
-    // Implement the redirect effect
-    useEffect(() => {
-        if (timer === 0 && !data) {
-            router.push('/')
-        }
-    }, [timer, data])
+    console.log("data: ", data)
+    console.log("test")
 
     return (
         <Main page={"results"}>
@@ -54,7 +33,7 @@ const ResultsPage = (props: ResultsProps) => {
             </Layout>
 
             <Layout>
-                {data ? (
+                {data && data.length > 0 ? (
                     <ul>
                         {data.map((car, index) => (
                             <li key={index}>
@@ -64,8 +43,9 @@ const ResultsPage = (props: ResultsProps) => {
                     </ul>
                     ) : (
                     <>
+                        <p>Whoops!</p>
                         <p>No data found</p>
-                        <p>Redirecting to homepage in {timer} seconds</p>
+                        <a href="/">go home</a>
                     </>
                 )}
             </Layout>
