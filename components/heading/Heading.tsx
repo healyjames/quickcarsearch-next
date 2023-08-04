@@ -19,7 +19,11 @@ export const HeadingH2 = styled.h2`
     color: ${props => props.theme.colors.neutrals.regular};
 `
 
-export const Heading = (props) => {
+interface HeadingProps {
+    children: React.ReactNode
+}
+
+export const Heading = (props: HeadingProps) => {
     return(
         <div>
            {props.children}

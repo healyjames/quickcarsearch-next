@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { RootState } from './types'; // Import the RootState type
 
-const initialState = {
-  data: null,
+const initialState: RootState = {
+  data: {
+    data: null,
+  },
 };
 
-function reducer(state = initialState, action) {
+function reducer(state = initialState, action: any) {
   switch (action.type) {
     case 'SET_DATA':
       return {

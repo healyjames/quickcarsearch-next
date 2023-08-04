@@ -33,13 +33,19 @@ const HomeContainer = styled.div`
 `;
 
 
-export const SlimHeader = (props) => {
+interface SlimHeaderProps {
+	id: string
+	logo: string
+	acronym: string
+  }
+
+export const SlimHeader = (props: SlimHeaderProps) => {
 	return(
 		<Layout>
 			<HomeContainer>
 				<div>
 					<HeaderContainerInner>
-						<a href="/" tabIndex="-1">
+						<a href="/" tabIndex={-1}>
 						<Image
 							src={"/assets/logo/" + props.logo}
 							alt="Picture of the author"

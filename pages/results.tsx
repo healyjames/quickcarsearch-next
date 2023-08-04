@@ -8,11 +8,18 @@ import { Layout } from '../components/layout/Layout';
 import { Main } from '../components/layout/Main';
 import { SlimHeader } from '../components/header/slim/SlimHeader';
 import { Heading } from '../components/heading/Heading';
+import { RootState } from '../redux/types'; // Import the RootState type
 
-const ResultsPage = (props) => {
+interface ResultsProps {
+    budget: string
+}
+
+const ResultsPage = (props: ResultsProps) => {
 
     // Use the 'useSelector' hook to get the data from Redux store
-    const data = useSelector((state) => state.data)
+    const data = useSelector((state: RootState) => state.data.data);
+    console.log("data: ", data)
+    console.log("test")
 
     // Define state variables for timer and router
     const router = useRouter()
@@ -32,7 +39,7 @@ const ResultsPage = (props) => {
 
     // Implement the redirect effect
     useEffect(() => {
-        if (timer === 0 && !data?.data) {
+        if (timer === 0 && !data) {
             router.push('/')
         }
     }, [timer, data])
@@ -49,9 +56,9 @@ const ResultsPage = (props) => {
             </Layout>
 
             <Layout>
-                {data && data.data ? (
+                {data ? (
                     <ul>
-                        {data.data.map((car, index) => (
+                        {data.map((car, index) => (
                             <li key={index}>
                             {car.make} {car.model} (£{car.avg_price})
                             </li>

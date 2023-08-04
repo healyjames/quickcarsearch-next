@@ -13,7 +13,12 @@ const Home = styled.main`
   }
 `;
 
-export const Main = (props) => {
+interface MainProps {
+    page: string
+    children: React.ReactNode
+}
+
+export const Main = (props: MainProps) => {
     return(
         props.page === 'home' ?
             <Home>

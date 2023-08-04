@@ -10,7 +10,11 @@ const StyledLayout = styled.div`
     }
 `
 
-export const Layout = (props) => {
+interface LayoutProps {
+    children: React.ReactNode
+}
+
+export const Layout = (props: LayoutProps) => {
     return(
         <StyledLayout>
             {props.children}

@@ -42,7 +42,12 @@ const Budget = styled.label`
     margin-bottom: ${props => props.theme.core.margin / 2}rem;
 `
 
-export const FormItem = (props) => {
+interface FormItemProps {
+    budget: number
+    setBudget: (value: string) => void;
+}
+
+export const FormItem = (props: FormItemProps) => {
     return(
         <StyledFormItem>
             <Budget htmlFor="budget">What's your budget?</Budget>
@@ -52,9 +57,9 @@ export const FormItem = (props) => {
                     type="text" 
                     name="budget" 
                     id="budget" 
-                    min="0" 
-                    maxLength="9" 
-                    step="10" 
+                    min={0} 
+                    maxLength={9} 
+                    step={10} 
                     placeholder="20,000..." 
                     pattern="^[0-9,.]*$"
                     value={props.budget} 
