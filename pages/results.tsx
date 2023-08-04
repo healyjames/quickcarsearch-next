@@ -18,8 +18,6 @@ const ResultsPage = (props: ResultsProps) => {
 
     // Use the 'useSelector' hook to get the data from Redux store
     const data = useSelector((state: RootState) => state.data.data);
-    console.log("data: ", data)
-    console.log("test")
 
     // Define state variables for timer and router
     const router = useRouter()
