@@ -11,7 +11,7 @@ import { Main } from "../components/layout/Main"
 import { Layout } from "../components/layout/Layout"
 
 const Home = () => (
-  <>
+  <React.Fragment>
 		<Head>
 			<title>Find the Fastest Car for your money - Online and Free</title>
 			<meta name="description" content="QuickCarSearch - The platform that makes it easy to find your next sports car, super car or performance car, all within your budget. Convinient and totally free." property="og:title" key="title" />
@@ -34,7 +34,7 @@ const Home = () => (
       </Layout>
       <FeatureImage />
     </Main>
-	</>
+	</React.Fragment>
 )
 
 export default Home;

@@ -35,7 +35,7 @@ export const Form = () => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <form id="main_form" onSubmit={handleSubmit} method="GET" aria-label="Set your budget">
         <fieldset>
           <legend className={'sr-only'}>Description</legend>
@@ -45,6 +45,6 @@ export const Form = () => {
       </form>
 
       {isLoading && <Loading />}
-    </>
+    </React.Fragment>
   )
 }
