@@ -5,7 +5,7 @@ import { DataState, Cars } from '../types'
 // Initial state
 const initialState: DataState = {
   data: null,
-};
+}
 
 // Reducer
 const dataReducer = (state = initialState, action: DataAction): DataState => {
@@ -14,11 +14,11 @@ const dataReducer = (state = initialState, action: DataAction): DataState => {
       return {
         ...state,
         data: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
 // Action creator
 export function fetchData(data: Cars[]): (dispatch: Dispatch<DataAction>) => void {
@@ -26,8 +26,8 @@ export function fetchData(data: Cars[]): (dispatch: Dispatch<DataAction>) => voi
     dispatch({
       type: 'SET_DATA',
       payload: data,
-    });
-  };
+    })
+  }
 }
 
-export default dataReducer;
+export default dataReducer
