@@ -1,17 +1,26 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import styled from 'styled-components'
 
-import { Layout } from '../components/layout/Layout';
-import { Main } from '../components/layout/Main';
-import { SlimHeader } from '../components/header/slim/SlimHeader';
-import { Heading } from '../components/heading/Heading';
-import { RootState } from '../redux/types'; // Import the RootState type
+import { RootState } from '../redux/types'
 
-interface ResultsProps {
-    budget: string
-}
+import { Layout } from '../components/layout/Layout'
+import { Main } from '../components/layout/Main'
+import { SlimHeader } from '../components/header/slim/SlimHeader'
+import { Heading } from '../components/heading/Heading'
 
-const ResultsPage = (props: ResultsProps) => {
+const ResultsList = styled.ul`
+    max-width: 500px;
+    margin: 0 auto;
+    list-style-type: none;
+`
+
+const ResultContainer = styled.li`
+    padding: 10px;
+    margin: 10px 0;
+`
+
+const ResultsPage = () => {
 
     // Use the 'useSelector' hook to get the data from Redux store
     const data = useSelector((state: RootState) => state.data.data)
@@ -31,13 +40,13 @@ const ResultsPage = (props: ResultsProps) => {
                             <h2>We found these results...</h2>
                             <h4>Budget of {budget}</h4>
                         </Heading>
-                        <ul>
+                        <ResultsList>
                             {data.map((car, index) => (
-                                <li key={index}>
-                                {car.make} {car.model} (£{car.avg_price})
-                                </li>
+                                <ResultContainer key={index}>
+                                    {car.make} {car.model} (£{car.avg_price})
+                                </ResultContainer>
                             ))}
-                        </ul>
+                        </ResultsList>
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
