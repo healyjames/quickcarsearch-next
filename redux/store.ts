@@ -1,28 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { RootState } from './types'; // Import the RootState type
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import budgetReducer from './reducers/budgetReducer';
+import dataReducer from './reducers/dataReducer'; // I assumed you have a dataReducer
 
-const initialState: RootState = {
-  data: {
-    data: null,
-  },
-};
-
-function reducer(state = initialState, action: any) {
-  switch (action.type) {
-    case 'SET_DATA':
-      return {
-        ...state,
-        data: action.payload,
-      };
-    default:
-      return state;
-  }
-}
+const rootReducer = combineReducers({
+    budget: budgetReducer,
+    data: dataReducer,
+});
 
 const store = configureStore({
-  reducer: {
-    data: reducer,
-  },
+    reducer: rootReducer,
 });
 
 export default store;

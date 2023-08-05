@@ -21,32 +21,36 @@ const ResultsPage = (props: ResultsProps) => {
     console.log("data: ", data)
     console.log("test")
 
+    console.log(props.budget)
+
     return (
         <Main page={"results"}>
             <SlimHeader id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
-                
-            <Layout>
-                <Heading>
-                    <h1>This is what we found</h1>
-                    <h2>Budget of {props.budget}</h2>
-                </Heading>
-            </Layout>
 
             <Layout>
                 {data && data.length > 0 ? (
-                    <ul>
-                        {data.map((car, index) => (
-                            <li key={index}>
-                            {car.make} {car.model} (£{car.avg_price})
-                            </li>
-                        ))}
-                    </ul>
-                    ) : (
-                    <>
-                        <p>Whoops!</p>
-                        <p>No data found</p>
-                        <a href="/">go home</a>
-                    </>
+                    <React.Fragment>
+                        <Heading>
+                            <h1>You're in luck!</h1>
+                            <h2>We found these results...</h2>
+                            <h4>Budget of {props.budget}</h4>
+                        </Heading>
+                        <ul>
+                            {data.map((car, index) => (
+                                <li key={index}>
+                                {car.make} {car.model} (£{car.avg_price})
+                                </li>
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <Heading>
+                            <h1>DANGER DANGER! EMERGENCY</h1>
+                            <h2>Jokes, there's no danger. But you have stumbled upon an error. Maybe try again? Idk, you're on your own kid.</h2>
+                        </Heading>
+                        <a href="/">Take me to safety</a>
+                    </React.Fragment>
                 )}
             </Layout>
         </Main>

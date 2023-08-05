@@ -9,7 +9,7 @@ import styled from 'styled-components'
 
 const HeaderContainerInner = styled.div`
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: baseline;
 	border-bottom: ${props => `${props.theme.border.width}px ${props.theme.border.style} ${props.theme.colors.neutrals.lightest}`};
 	padding-bottom: ${props => props.theme.core.padding}rem;
@@ -18,6 +18,7 @@ const HeaderContainerInner = styled.div`
 
 const AcronymContainer = styled.div`
   	transform: scale(0.85);
+	margin-left: 1rem;
 `;
 
 const HomeContainer = styled.div`
