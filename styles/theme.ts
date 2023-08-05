@@ -1,6 +1,47 @@
-import { createGlobalStyle, styled, css, ThemeProvider } from 'styled-components';
+import { DefaultTheme, createGlobalStyle } from 'styled-components'
 
-export const BrandConfig = {
+export interface Theme extends DefaultTheme {
+    colors: {
+        brand: string
+        accent: string
+        neutrals: {
+            regular: string
+            light: string
+            lightest: string
+        }
+        foreground: string
+        background: string
+    }
+    font: {
+        family: {
+            primary: string
+            secondary: string
+        }
+        size: number
+    }
+    breakpoints: {
+        sm: number
+        md: number
+        lg: number
+        xl: number
+    }
+    core: {
+        margin: number
+        padding: number
+        grid: {
+            gap: number
+        }
+        maxWidth: number
+    }
+    border: {
+        color: string
+        radius: number
+        width: number
+        style: string
+    }
+}
+
+export const BrandConfig: Theme = {
     colors: {
         brand: '#E8740C',
         accent: '#0C2b3A',
@@ -41,11 +82,14 @@ export const BrandConfig = {
     }
 };
 
-export const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
     html {
         scroll-behavior: smooth;
         font-size: 16px;
-        background-color: ${props => props.theme.colors.background};
+        background-color: ${props => {
+            console.log('props.theme: ', props.theme)
+            return props.theme.colors.background
+        }};
     }
 
     body {
