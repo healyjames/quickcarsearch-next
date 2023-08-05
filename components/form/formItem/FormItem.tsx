@@ -43,7 +43,7 @@ const Budget = styled.label`
 `
 
 interface FormItemProps {
-    budget: number
+    budget: string
     setBudget: (value: string) => void;
 }
 
