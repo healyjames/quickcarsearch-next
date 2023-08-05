@@ -4,10 +4,11 @@ import { useDispatch } from 'react-redux';
 import { FormItem } from './formItem/FormItem';
 import { FormSubmit } from './formSubmit/FormSubmit';
 import { Loading } from '../loading/Loading';
+import { setBudget } from '../../redux/reducers/budgetReducer'
 import data from '../../data.json';
 
 export const Form = () => {
-  const [budget, setBudget] = useState('');
+  const [budget, setBudgetValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -26,7 +27,8 @@ export const Form = () => {
 
         router.push('/results');
         setIsLoading(false);
-      }, Math.floor(Math.random() * (1200 - 400 + 1) + 500));
+      }, Math.floor(Math.random() * (1200 - 400 + 1) + 500))
+      dispatch(setBudget(budget))
     } catch (error) {
       console.error(error);
     }
@@ -37,7 +39,7 @@ export const Form = () => {
       <form id="main_form" onSubmit={handleSubmit} method="GET" aria-label="Set your budget">
         <fieldset>
           <legend className={'sr-only'}>Description</legend>
-          <FormItem budget={budget} setBudget={setBudget} />
+          <FormItem budget={budget} setBudget={setBudgetValue} />
           <FormSubmit />
         </fieldset>
       </form>

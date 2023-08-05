@@ -14,9 +14,10 @@ interface ResultsProps {
 const ResultsPage = (props: ResultsProps) => {
 
     // Use the 'useSelector' hook to get the data from Redux store
-    const data = useSelector((state: RootState) => state.data.data);
+    const data = useSelector((state: RootState) => state.data.data)
+    const budget = useSelector((state: RootState) => state.budget.budget)
 
-    console.log(props.budget)
+    console.log(budget)
 
     return (
         <Main page={"results"}>
@@ -28,7 +29,7 @@ const ResultsPage = (props: ResultsProps) => {
                         <Heading>
                             <h1>You're in luck!</h1>
                             <h2>We found these results...</h2>
-                            <h4>Budget of {props.budget}</h4>
+                            <h4>Budget of {budget}</h4>
                         </Heading>
                         <ul>
                             {data.map((car, index) => (

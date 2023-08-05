@@ -1,7 +1,7 @@
 interface Data {
   make: string;
   model: string;
-  avg_price: number;
+  avg_price: string;
 }
 
 // Action interfaces
