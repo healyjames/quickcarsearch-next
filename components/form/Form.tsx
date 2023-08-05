@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux'
-import { fetchData } from '../../redux/actions/dataAction';
+import { fetchData } from '../../redux/reducers/dataReducer';
 
 import { FormItem } from './formItem/FormItem';
 import { FormSubmit } from './formSubmit/FormSubmit'

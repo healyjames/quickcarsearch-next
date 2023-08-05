@@ -1,35 +1,16 @@
-import { Dispatch } from 'redux';
-
-interface Data {
-  make: string;
-  model: string;
-  avg_price: number;
-}
-
-// Action types
-export const SET_DATA = 'SET_DATA';
-
-// Action interfaces
-interface SetDataAction {
-  type: typeof SET_DATA;
-  payload: Data[]; // Specify the payload type based on your data structure
-}
-
-export type ActionTypes = SetDataAction;
+import { Dispatch } from 'redux'
+import { DataAction } from '../actions/dataAction'
+import { DataState, Cars } from '../types'
 
 // Initial state
-interface DataState {
-  data: Data[] | null;
-}
-
 const initialState: DataState = {
   data: null,
 };
 
 // Reducer
-const dataReducer = (state = initialState, action: ActionTypes): DataState => {
+const dataReducer = (state = initialState, action: DataAction): DataState => {
   switch (action.type) {
-    case SET_DATA:
+    case 'SET_DATA':
       return {
         ...state,
         data: action.payload,
@@ -40,10 +21,10 @@ const dataReducer = (state = initialState, action: ActionTypes): DataState => {
 };
 
 // Action creator
-export function fetchData(data: Data[]): (dispatch: Dispatch<ActionTypes>) => void {
-  return async (dispatch: Dispatch<ActionTypes>) => {
+export function fetchData(data: Cars[]): (dispatch: Dispatch<DataAction>) => void {
+  return async (dispatch: Dispatch<DataAction>) => {
     dispatch({
-      type: SET_DATA,
+      type: 'SET_DATA',
       payload: data,
     });
   };

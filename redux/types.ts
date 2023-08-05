@@ -1,4 +1,4 @@
-export interface Car {
+export interface Cars {
     make: string
     model: string
     avg_price: number
@@ -6,7 +6,7 @@ export interface Car {
 }
   
 export interface DataState {
-    data: Car[] | null
+    data: Cars[] | null
 }
   
 export interface RootState {
