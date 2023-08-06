@@ -10,14 +10,38 @@ import { SlimHeader } from '../components/header/slim/SlimHeader'
 import { Heading } from '../components/heading/Heading'
 
 const ResultsList = styled.ul`
-    max-width: 500px;
+    max-width: ${(props) => props.theme.breakpoints.md}px;
     margin: 0 auto;
     list-style-type: none;
+    padding: 0;
 `
 
-const ResultContainer = styled.li`
-    padding: 10px;
+const ResultContainerInner = styled.a`
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr;
+    padding: ${(props) => props.theme.core.padding}rem 0;
+`
+
+const ResultContainerOuter = styled.li`
+    background-color: ${(props) => props.theme.colors.neutrals.darkest};
+    border-radius: 12px;
+    padding: 0 ${(props) => (props.theme.core.padding)}rem;
     margin: 10px 0;
+    transition: background-color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.2s ease-in-out;
+
+    &:hover {
+        background-color: ${(props) => props.theme.colors.neutrals.dark};
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints.sm}px) {
+        padding: 0 ${(props) => props.theme.core.padding * 2}rem;
+    }
+`
+
+const ResultItem = styled.span`
+    margin: 0 ${(props) => props.theme.core.margin}rem;
 `
 
 const ResultsPage = () => {
@@ -42,9 +66,13 @@ const ResultsPage = () => {
                         </Heading>
                         <ResultsList>
                             {data.map((car, index) => (
-                                <ResultContainer key={index}>
-                                    {car.make} {car.model} (£{car.avg_price})
-                                </ResultContainer>
+                                <ResultContainerOuter key={index}>
+                                    <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
+                                        <ResultItem>{car.make}</ResultItem>
+                                        <ResultItem>{car.model}</ResultItem>
+                                        <ResultItem>£{car.avg_price}</ResultItem>
+                                    </ResultContainerInner>
+                                </ResultContainerOuter>
                             ))}
                         </ResultsList>
                     </React.Fragment>

@@ -5,6 +5,8 @@ export interface Theme extends DefaultTheme {
         brand: string
         accent: string
         neutrals: {
+            darkest: string
+            dark: string
             regular: string
             light: string
             lightest: string
@@ -46,7 +48,9 @@ export const BrandConfig: Theme = {
         brand: '#E8740C',
         accent: '#0C2b3A',
         neutrals: {
-            regular: '#9aa0a6',
+            darkest: '#303336',
+            dark: '#565C61',
+            regular: '#9AA0A6',
             light: '#CCCCCC',
             lightest: '#EBEBEB'
         },
@@ -86,10 +90,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
     html {
         scroll-behavior: smooth;
         font-size: 16px;
-        background-color: ${props => {
-            console.log('props.theme: ', props.theme)
-            return props.theme.colors.background
-        }};
+        background-color: ${props => props.theme.colors.background};
     }
 
     body {
