@@ -4,6 +4,12 @@ import Image from 'next/image'
 
 import styled from 'styled-components'
 
+interface HeaderProps {
+	id: string
+	logo: string
+	acronym: string
+}
+
 const HeaderContainerInner = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -20,12 +26,12 @@ const HeaderContainerInner = styled.div`
 	}
 `
 
-export const Header = (props) => {
+export const Header = (props: HeaderProps) => {
 	return(
 		<div id={'home'}>
 			<div>
 				<HeaderContainerInner>
-					<a href="/" tabIndex="-1">
+					<a href="/" tabIndex={-1}>
 						<Image
 							src={"/assets/logo/" + props.logo}
 							alt="Picture of the author"

@@ -38,7 +38,7 @@ interface SlimHeaderProps {
 	id: string
 	logo: string
 	acronym: string
-  }
+}
 
 export const SlimHeader = (props: SlimHeaderProps) => {
 	return(
