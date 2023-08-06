@@ -7,7 +7,7 @@ const StyledAd = styled.div`
     height: 100px;
     max-width: 600px;
     margin: 0 auto;
-    border-radius: 0.6em;
+    border-radius: ${props => props.theme.border.radius}rem;
 `
 
 export const HorizontalAd = () => {

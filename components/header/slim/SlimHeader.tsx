@@ -9,11 +9,15 @@ import styled from 'styled-components'
 
 const HeaderContainerInner = styled.div`
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: baseline;
 	border-bottom: ${props => `${props.theme.border.width}px ${props.theme.border.style} ${props.theme.colors.neutrals.lightest}`};
 	padding-bottom: ${props => props.theme.core.padding}rem;
 	margin-bottom: ${props => (props.theme.core.margin * 2).toFixed(2)}rem;
+
+	@media (min-width: ${props => props.theme.breakpoints.lg}px) {
+        justify-content: flex-end;
+    }
 `;
 
 const AcronymContainer = styled.div`
@@ -22,15 +26,7 @@ const AcronymContainer = styled.div`
 `;
 
 const HomeContainer = styled.div`
-	.menu_container {
-		margin-top: 0;
-	}
-
-  	${HeaderContainerInner} {
-		border-bottom: none;
-		padding-bottom: 0;
-		margin-bottom: 0;
-  	}
+padding: ${props => (props.theme.core.padding * 2).toFixed(2)}rem ${props => (props.theme.core.padding * 2).toFixed(2)}rem ${props => (props.theme.core.padding / 2).toFixed(2)}rem ${props => (props.theme.core.padding * 2).toFixed(2)}rem;
 `;
 
 
@@ -42,31 +38,29 @@ interface SlimHeaderProps {
 
 export const SlimHeader = (props: SlimHeaderProps) => {
 	return(
-		<Layout>
-			<HomeContainer>
-				<div>
-					<HeaderContainerInner>
-						<a href="/" tabIndex={-1}>
+		<HomeContainer>
+			<div>
+				<HeaderContainerInner>
+					<a href="/" tabIndex={-1}>
+					<Image
+						src={"/assets/logo/" + props.logo}
+						alt="Picture of the author"
+						width="30"
+						height="25"
+						style={{width: '50px', height: 'auto'}}
+					/>
+					</a>
+					<AcronymContainer>
 						<Image
-							src={"/assets/logo/" + props.logo}
+							src={"/assets/logo/" + props.acronym}
 							alt="Picture of the author"
-							width="30"
-							height="25"
-							style={{width: '50px', height: 'auto'}}
+							width="60"
+							height="50"
+							style={{width: '75px', height: 'auto'}}
 						/>
-						</a>
-						<AcronymContainer>
-							<Image
-								src={"/assets/logo/" + props.acronym}
-								alt="Picture of the author"
-								width="60"
-								height="50"
-								style={{width: '75px', height: 'auto'}}
-							/>
-						</AcronymContainer>
-					</HeaderContainerInner>
-				</div>
-			</HomeContainer>
-		</Layout>
+					</AcronymContainer>
+				</HeaderContainerInner>
+			</div>
+		</HomeContainer>
 	)
 }

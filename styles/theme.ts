@@ -80,7 +80,7 @@ export const BrandConfig: Theme = {
     },
     border: {
         color: '#E6EAEE',
-        radius: .6, //rem
+        radius: .75, //rem
         width: 2, //px
         style: 'solid'
     }

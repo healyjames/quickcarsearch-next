@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 import { RootState } from '../redux/types'
 
-import { Layout } from '../components/layout/Layout'
 import { Main } from '../components/layout/Main'
 import { SlimHeader } from '../components/header/slim/SlimHeader'
 import { Heading } from '../components/heading/Heading'
@@ -44,6 +43,10 @@ const ResultItem = styled.span`
     margin: 0 ${(props) => props.theme.core.margin}rem;
 `
 
+const ResultsPageContainer = styled.div`
+    padding: ${(props) => (props.theme.core.padding / 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem;
+`
+
 const ResultsPage = () => {
 
     // Use the 'useSelector' hook to get the data from Redux store
@@ -56,13 +59,14 @@ const ResultsPage = () => {
         <Main page={"results"}>
             <SlimHeader id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
 
-            <Layout>
+            <ResultsPageContainer>
                 {data && data.length > 0 ? (
                     <React.Fragment>
                         <Heading>
                             <h1>You're in luck!</h1>
                             <h2>We found these results...</h2>
                             <h4>Budget of {budget}</h4>
+                            <p>Number of results: </p>
                         </Heading>
                         <ResultsList>
                             {data.map((car, index) => (
@@ -80,12 +84,12 @@ const ResultsPage = () => {
                     <React.Fragment>
                         <Heading>
                             <h1>DANGER DANGER! EMERGENCY</h1>
-                            <h2>Jokes, there's no danger. But you have stumbled upon an error. Maybe try again? Idk, you're on your own kid.</h2>
+                            <h2>Just kidding, there's no danger. But you have stumbled upon an error. Maybe try again? Idk, you're on your own kid.</h2>
                         </Heading>
                         <a href="/">Take me to safety</a>
                     </React.Fragment>
                 )}
-            </Layout>
+            </ResultsPageContainer>
         </Main>
     )
 }
