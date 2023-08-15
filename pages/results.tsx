@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
@@ -19,6 +21,7 @@ const ResultsBody = styled.ul`
     flex-wrap: nowrap;
     list-style-type: none;
     padding: 0;
+    margin-bottom: 0;
 
     li {
         border-top: ${(props) => props.theme.border.width}px solid #333;
@@ -115,11 +118,31 @@ const Container = styled.div`
     }
 `
 
+const LoadMoreButton = styled.button`
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    margin: 0 auto;
+    padding: ${props => (props.theme.core.padding * 1)}rem ${props => (props.theme.core.padding * 4)}rem;
+    cursor: pointer;
+
+    p {
+        margin: 0;
+    }
+`
+
 const ResultsPage = () => {
+
+    const router = useRouter();
 
     // Use the 'useSelector' hook to get the data from Redux store
     const data = useSelector((state: RootState) => state.data.data)
     const budget = useSelector((state: RootState) => state.budget.budget)
+
+    const [batchSize, setBatchSize] = useState(8);
+    const [startIndex, setStartIndex] = useState(0);
+    const [endIndex, setEndIndex] = useState(batchSize);
 
     const formattedBudget = parseFloat(budget).toLocaleString('en-GB', {
         style: 'currency',
@@ -165,8 +188,8 @@ const ResultsPage = () => {
                                     <div className='price'>Price</div>
                                 </ResultsHead>
                                 <ResultsBody>
-                                    {data.map((car, index) => (
-                                        <li key={index}>
+                                    {data.slice(0, endIndex).map((car, index) => (
+                                        <li key={index + startIndex}>
                                             <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
                                                 <ResultItem className='brand'>
                                                     <div>{car.make}</div>
@@ -186,6 +209,45 @@ const ResultsPage = () => {
                                         </li>
                                     ))}
                                 </ResultsBody>
+                                {endIndex < data.length && (
+                                    <LoadMoreButton
+                                        onClick={() => {
+                                            setStartIndex(startIndex + batchSize);
+                                            setEndIndex(endIndex + batchSize);
+                                        }}>
+                                        <div>
+                                            <p>Load More</p>
+                                            <Image src="/assets/icons/chevron-down-solid.svg" alt="Chevron Down" width={12} height={12} />
+                                        </div>
+                                    </LoadMoreButton>
+                                )}
+                                {/* End of results message... */}
+                                {endIndex >= data.length && (
+                                    <LoadMoreButton
+                                        onClick={() => {
+                                            router.push('/')
+                                        }}>
+                                        <div style={{
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            flexWrap: 'nowrap',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            gap: '4px'
+                                        }}>
+                                            <Image 
+                                                src="/assets/icons/chevron-down-solid.svg" 
+                                                alt="Chevron Down" 
+                                                width={12} 
+                                                height={12}
+                                                style={{
+                                                    transform: 'rotate(90deg)'
+                                                }}
+                                                 />
+                                            <p>End of results - Go home</p>
+                                        </div>
+                                    </LoadMoreButton>
+                                )}
                             </ResultsContainer>
                         </React.Fragment>
                     </ResultsPageContainer>
