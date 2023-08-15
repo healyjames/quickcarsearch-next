@@ -7,9 +7,7 @@ const HeaderContainerInner = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
-	border-bottom: ${props => `${props.theme.border.width}px ${props.theme.border.style} ${props.theme.colors.neutrals.lightest}`};
-	padding-bottom: ${props => props.theme.core.padding}rem;
-	margin-bottom: ${props => (props.theme.core.margin * 2).toFixed(2)}rem;
+	padding: 0 ${props => props.theme.core.padding}rem;
 
 	@media (min-width: ${props => props.theme.breakpoints.lg}px) {
         justify-content: flex-end;
@@ -22,7 +20,8 @@ const AcronymContainer = styled.div`
 `;
 
 const HomeContainer = styled.div`
-padding: ${props => (props.theme.core.padding * 2).toFixed(2)}rem 0;
+	background-color: ${(props) => props.theme.colors.brand};
+	padding: ${props => (props.theme.core.padding * 2).toFixed(2)}rem 0;
 `;
 
 
