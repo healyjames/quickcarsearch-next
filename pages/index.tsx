@@ -9,7 +9,7 @@ import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { Main } from "../components/layout/Main"
 import { Layout } from "../components/layout/Layout"
-import EngagementModal from '../components/ads/EngagementModal'
+// import EngagementModal from '../components/ads/EngagementModal'
 
 const Home = () => (
   <React.Fragment>
