@@ -9,6 +9,7 @@ import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { Main } from "../components/layout/Main"
 import { Layout } from "../components/layout/Layout"
+import EngagementModal from '../components/ads/EngagementModal'
 
 const Home = () => (
   <React.Fragment>
@@ -21,6 +22,8 @@ const Home = () => (
       <meta name="mobile-web-app-capable" content="yes" property="og:mobile_webapp" key="mobile_webapp" />
       <meta name="apple-mobile-web-app-capable" content="yes" property="og:apple_webapp" key="apple_webapp" />
 		</Head>
+
+    {/* <EngagementModal /> */}
 
     <Main page="home">
       <Layout>
