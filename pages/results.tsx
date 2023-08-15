@@ -8,35 +8,26 @@ import { Main } from '../components/layout/Main'
 import { SlimHeader } from '../components/header/slim/SlimHeader'
 import { Heading } from '../components/heading/Heading'
 
-const ResultsList = styled.ul`
-    max-width: ${(props) => props.theme.breakpoints.md}px;
+const ResultsContainer = styled.div`
     margin: 0 auto;
+`
+
+const ResultsBody = styled.ul`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     list-style-type: none;
     padding: 0;
+
+    li {
+        border-top: ${(props) => props.theme.border.width}px solid #333;
+    }
 `
 
 const ResultContainerInner = styled.a`
     display: grid;
-    grid-template-columns: 1fr 9fr 1fr;
-    padding: ${(props) => props.theme.core.padding}rem 0;
-`
-
-const ResultContainerOuter = styled.li`
-    background-color: ${(props) => props.theme.colors.neutrals.darkest};
-    border-radius: 12px;
-    padding: 0 ${(props) => (props.theme.core.padding)}rem;
-    margin: 10px 0;
-    transition: background-color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.2s ease-in-out;
-
-    &:hover {
-        background-color: ${(props) => props.theme.colors.neutrals.dark};
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (min-width: ${props => props.theme.breakpoints.sm}px) {
-        padding: 0 ${(props) => props.theme.core.padding * 2}rem;
-    }
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: ${(props) => (props.theme.core.padding * 2)}rem 0;
 `
 
 const ResultItem = styled.span`
@@ -44,7 +35,26 @@ const ResultItem = styled.span`
 `
 
 const ResultsPageContainer = styled.div`
+    max-width: ${(props) => (props.theme.breakpoints.md - 25)}px;
+    margin: 0 auto;
     padding: ${(props) => (props.theme.core.padding / 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem;
+
+    @media (min-width: ${props => props.theme.breakpoints.md}px) {
+        max-width: ${(props) => (props.theme.breakpoints.md - 50)}px;
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints.lg}px) {
+        max-width: ${(props) => (props.theme.breakpoints.lg - 100)}px;
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints.xl}px) {
+        max-width: ${(props) => (props.theme.breakpoints.xl - 150)}px;
+    }
+`
+
+const ResultsHead = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 `
 
 const ResultsPage = () => {
@@ -57,9 +67,10 @@ const ResultsPage = () => {
 
     return (
         <Main page={"results"}>
+            <ResultsPageContainer>
             <SlimHeader id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
 
-            <ResultsPageContainer>
+            
                 {data && data.length > 0 ? (
                     <React.Fragment>
                         <Heading>
@@ -68,17 +79,31 @@ const ResultsPage = () => {
                             <h4>Budget of {budget}</h4>
                             <p>Number of results: </p>
                         </Heading>
-                        <ResultsList>
-                            {data.map((car, index) => (
-                                <ResultContainerOuter key={index}>
-                                    <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
-                                        <ResultItem>{car.make}</ResultItem>
-                                        <ResultItem>{car.model}</ResultItem>
-                                        <ResultItem>£{car.avg_price}</ResultItem>
-                                    </ResultContainerInner>
-                                </ResultContainerOuter>
-                            ))}
-                        </ResultsList>
+                        <ResultsContainer>
+                            <ResultsHead>
+                                <div>Filter - All matches</div>
+                                <div>BHP</div>
+                                <div>0-60mph</div>
+                                <div>Torque</div>
+                                <div>Price</div>
+                            </ResultsHead>
+                            <ResultsBody>
+                                {data.map((car, index) => (
+                                    <li key={index}>
+                                        <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
+                                            <ResultItem>
+                                                <div>{car.make}</div>
+                                                <div>{car.model} {car.model}</div>
+                                            </ResultItem>
+                                            <ResultItem>900</ResultItem>
+                                            <ResultItem>4.2</ResultItem>
+                                            <ResultItem>300</ResultItem>
+                                            <ResultItem>£{car.avg_price}</ResultItem>
+                                        </ResultContainerInner>
+                                    </li>
+                                ))}
+                            </ResultsBody>
+                        </ResultsContainer>
                     </React.Fragment>
                 ) : (
                     <React.Fragment>

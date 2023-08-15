@@ -1,9 +1,5 @@
 import React from 'react'
-
 import Image from 'next/image'
-
-import { Layout } from '../../layout/Layout'
-
 import styled from 'styled-components'
 
 
@@ -26,7 +22,7 @@ const AcronymContainer = styled.div`
 `;
 
 const HomeContainer = styled.div`
-padding: ${props => (props.theme.core.padding * 2).toFixed(2)}rem ${props => (props.theme.core.padding * 2).toFixed(2)}rem ${props => (props.theme.core.padding / 2).toFixed(2)}rem ${props => (props.theme.core.padding * 2).toFixed(2)}rem;
+padding: ${props => (props.theme.core.padding * 2).toFixed(2)}rem 0;
 `;
 
 
