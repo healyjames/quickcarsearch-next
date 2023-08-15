@@ -27,8 +27,12 @@ const ResultsBody = styled.ul`
 
 const ResultContainerInner = styled.a`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     padding: ${(props) => (props.theme.core.padding * 2)}rem 0;
+
+    @media (min-width: ${props => props.theme.breakpoints.md}px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
 `
 
 const ResultItem = styled.span`
@@ -55,12 +59,20 @@ const ResultsPageContainer = styled.div`
 
 const ResultsHead = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+
+    @media (min-width: ${props => props.theme.breakpoints.md}px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
 `
 
 export const HeadingContainerOuter = styled.div`
     background-color: ${(props) => props.theme.colors.brand};
-	padding: ${props => (props.theme.core.padding * 12)}rem 0 ${props => (props.theme.core.padding * 2)}rem 0;
+	padding-bottom: ${props => (props.theme.core.padding * 2)}rem;
+
+    @media (min-width: ${props => props.theme.breakpoints.md}px) {
+        padding: ${props => (props.theme.core.padding * 12)}rem 0 ${props => (props.theme.core.padding * 2)}rem 0;
+    }
 `
 
 export const HeadingContainerInner = styled.div`
@@ -86,9 +98,21 @@ export const HeadingContainerInner = styled.div`
 `
 
 export const StyledH1 = styled.h1`
-    font-size: ${(props) => (props.theme.font.size * 3)}rem;
+    font-size: ${(props) => (props.theme.font.size * 3).toFixed(2)}rem;
     font-weight: 100;
     margin: 0;
+`
+
+const Container = styled.div`
+    .bhp, .acceleration, .torque {
+        display: none;
+    }
+
+    @media (min-width: ${props => props.theme.breakpoints.md}px) {
+        .bhp, .acceleration, .torque {
+            display: block;
+        }
+    }
 `
 
 const ResultsPage = () => {
@@ -100,7 +124,8 @@ const ResultsPage = () => {
     const formattedBudget = parseFloat(budget).toLocaleString('en-GB', {
         style: 'currency',
         currency: 'GBP',
-      });
+        minimumFractionDigits: 0
+    });
 
     return (
         <Main page={"results"}>  
@@ -111,7 +136,7 @@ const ResultsPage = () => {
             )}
 
             {data && data.length > 0 ? (
-                <React.Fragment>
+                <Container>
                     <HeadingContainerOuter>
                         <HeadingContainerInner>
                             <Heading>
@@ -133,24 +158,30 @@ const ResultsPage = () => {
                         <React.Fragment>
                             <ResultsContainer>
                                 <ResultsHead>
-                                    <div>Filter - All matches</div>
-                                    <div>BHP</div>
-                                    <div>0-60mph</div>
-                                    <div>Torque</div>
-                                    <div>Price</div>
+                                    <div className='brand'>Filter - All matches</div>
+                                    <div className='bhp'>BHP</div>
+                                    <div className='acceleration'>0-60mph</div>
+                                    <div className='torque'>Torque</div>
+                                    <div className='price'>Price</div>
                                 </ResultsHead>
                                 <ResultsBody>
                                     {data.map((car, index) => (
                                         <li key={index}>
                                             <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
-                                                <ResultItem>
+                                                <ResultItem className='brand'>
                                                     <div>{car.make}</div>
                                                     <div>{car.model} {car.model}</div>
                                                 </ResultItem>
-                                                <ResultItem>{car.bhp}</ResultItem>
-                                                <ResultItem>{car.acceleration}</ResultItem>
-                                                <ResultItem>{car.torque}</ResultItem>
-                                                <ResultItem>£{car.avg_price}</ResultItem>
+                                                <ResultItem className='bhp'>{car.bhp}</ResultItem>
+                                                <ResultItem className='acceleration'>{car.acceleration}</ResultItem>
+                                                <ResultItem className='torque'>{car.torque}</ResultItem>
+                                                <ResultItem className='price'>{
+                                                    parseFloat(car.avg_price).toLocaleString('en-GB', {
+                                                        style: 'currency',
+                                                        currency: 'GBP',
+                                                        minimumFractionDigits: 0
+                                                    })
+                                                }</ResultItem>
                                             </ResultContainerInner>
                                         </li>
                                     ))}
@@ -158,7 +189,7 @@ const ResultsPage = () => {
                             </ResultsContainer>
                         </React.Fragment>
                     </ResultsPageContainer>
-                </React.Fragment>
+                </Container>
                 ) : budget && (
                     <React.Fragment>
                         <NoResults cause={'data'} />
