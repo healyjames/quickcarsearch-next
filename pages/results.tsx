@@ -7,6 +7,7 @@ import { RootState } from '../redux/types'
 import { Main } from '../components/layout/Main'
 import { SlimHeader } from '../components/header/slim/SlimHeader'
 import { Heading } from '../components/heading/Heading'
+import NoResults from '../components/no-results/NoResults'
 
 const ResultsContainer = styled.div`
     margin: 0 auto;
@@ -36,7 +37,7 @@ const ResultItem = styled.span`
 
 const ResultsPageContainer = styled.div`
     max-width: ${(props) => (props.theme.breakpoints.md - 25)}px;
-    margin: ${(props) => props.theme.core.margin}rem auto;
+    margin: ${(props) => (props.theme.core.margin * 3)}rem auto;
     padding: ${(props) => (props.theme.core.padding / 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem;
 
     @media (min-width: ${props => props.theme.breakpoints.md}px) {
@@ -57,12 +58,12 @@ const ResultsHead = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 `
 
-const HeadingContainerOuter = styled.div`
+export const HeadingContainerOuter = styled.div`
     background-color: ${(props) => props.theme.colors.brand};
 	padding: ${props => (props.theme.core.padding * 12)}rem 0 ${props => (props.theme.core.padding * 2)}rem 0;
 `
 
-const HeadingContainerInner = styled.div`
+export const HeadingContainerInner = styled.div`
     margin: 0 auto;
     padding:  ${(props) => props.theme.core.padding}rem;
     max-width: ${(props) => (props.theme.breakpoints.md - 25)}px;
@@ -84,7 +85,7 @@ const HeadingContainerInner = styled.div`
     }
 `
 
-const StyledH1 = styled.h1`
+export const StyledH1 = styled.h1`
     font-size: ${(props) => (props.theme.font.size * 3)}rem;
     font-weight: 100;
     margin: 0;
@@ -105,12 +106,16 @@ const ResultsPage = () => {
         <Main page={"results"}>  
             <SlimHeader id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
 
+            {!budget && (
+                <NoResults cause={'budget'} />
+            )}
+
             {data && data.length > 0 ? (
                 <React.Fragment>
                     <HeadingContainerOuter>
                         <HeadingContainerInner>
                             <Heading>
-                                <StyledH1>Here is what we found</StyledH1>
+                                <StyledH1>Here's what we found</StyledH1>
                                 <div style={{
                                     display: 'flex',
                                     flexDirection: 'row',
@@ -154,13 +159,9 @@ const ResultsPage = () => {
                         </React.Fragment>
                     </ResultsPageContainer>
                 </React.Fragment>
-                ) : (
+                ) : budget && (
                     <React.Fragment>
-                        <Heading>
-                            <h1>DANGER DANGER! EMERGENCY</h1>
-                            <h2>Just kidding, there's no danger. But you have stumbled upon an error. Maybe try again? Idk, you're on your own kid.</h2>
-                        </Heading>
-                        <a href="/">Take me to safety</a>
+                        <NoResults cause={'data'} />
                     </React.Fragment>
                 )}
             
