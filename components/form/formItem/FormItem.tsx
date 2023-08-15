@@ -48,6 +48,16 @@ interface FormItemProps {
 }
 
 export const FormItem = (props: FormItemProps) => {
+    const formatCurrency = (value: string) => {
+        const numericValue = parseFloat(value.replace(/[^0-9]/g, ''));
+    
+        if (!isNaN(numericValue)) {
+            return numericValue.toLocaleString('en-GB');
+        }
+        
+        return '';
+    };
+
     return(
         <StyledFormItem>
             <Budget htmlFor="budget">What's your budget?</Budget>
@@ -62,12 +72,11 @@ export const FormItem = (props: FormItemProps) => {
                     step={10} 
                     placeholder="20,000..." 
                     pattern="^[0-9,.]*$"
-                    value={props.budget} 
-                    onChange={
-                        (event) => props.setBudget(
-                            event.target.value
-                        )
-                    } 
+                    value={formatCurrency(props.budget)} 
+                    onChange={(event) => {
+                        const formattedValue = formatCurrency(event.target.value);
+                        props.setBudget(formattedValue.replace(/[^\d.]/g, ''));
+                    }}
                     required />
             </FormInputItem>
         </StyledFormItem>
