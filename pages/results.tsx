@@ -148,7 +148,7 @@ const ResultsPage = () => {
     const data = useSelector((state: RootState) => state.data.data)
     const budget = useSelector((state: RootState) => state.budget.budget)
 
-    const [batchSize, setBatchSize] = useState(8);
+    const [batchSize] = useState(8);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(batchSize);
 
