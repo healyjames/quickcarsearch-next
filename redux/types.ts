@@ -3,7 +3,7 @@ export interface Cars {
     model: string
     avg_price: string
     variant?: string
-    modelYear: number
+    model_year: number
     bhp: number
     torque: number
     acceleration: string

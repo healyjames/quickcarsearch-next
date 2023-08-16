@@ -40,6 +40,14 @@ const ResultContainerInner = styled.a`
 
 const ResultItem = styled.span`
     margin: 0 ${(props) => props.theme.core.margin}rem;
+
+    .model_year {
+        font-size: ${(props) => (props.theme.font.size / 1.5)}rem;
+    }
+    .make {
+        font-size: ${(props) => props.theme.font.size}rem;
+        font-weight: bold;
+    }
 `
 
 const ResultsPageContainer = styled.div`
@@ -192,8 +200,9 @@ const ResultsPage = () => {
                                         <li key={index + startIndex}>
                                             <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
                                                 <ResultItem className='brand'>
-                                                    <div>{car.make}</div>
-                                                    <div>{car.model} {car.model}</div>
+                                                    <div className='model_year'>{car.model_year}</div>
+                                                    <div className='make'>{car.make}</div>
+                                                    <div className='model'>{car.model} {car.variant}</div>
                                                 </ResultItem>
                                                 <ResultItem className='bhp'>{car.bhp}</ResultItem>
                                                 <ResultItem className='acceleration'>{car.acceleration}</ResultItem>
