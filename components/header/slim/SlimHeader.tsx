@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link';
 import styled from 'styled-components'
 
 
@@ -36,7 +37,7 @@ export const SlimHeader = (props: SlimHeaderProps) => {
 		<HomeContainer>
 			<div>
 				<HeaderContainerInner>
-					<a href="/" tabIndex={-1}>
+					<Link href="/" tabIndex={-1}>
 					<Image
 						src={"/assets/logo/" + props.logo}
 						alt="Picture of the author"
@@ -44,7 +45,7 @@ export const SlimHeader = (props: SlimHeaderProps) => {
 						height="25"
 						style={{width: '50px', height: 'auto'}}
 					/>
-					</a>
+					</Link>
 					<AcronymContainer>
 						<Image
 							src={"/assets/logo/" + props.acronym}
