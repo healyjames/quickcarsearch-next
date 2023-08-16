@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import styled from 'styled-components'
 import Cookies from 'js-cookie'
 
@@ -68,7 +69,7 @@ const EngagementModal: React.FC = () => {
     <ModalOverlay onClick={handleOverlayClick}>
       <ModalContent>
         <CloseButton onClick={handleCloseModal}>Close</CloseButton>
-        <img src="/imge.jpg" alt="Engagement Modal" />
+        <Image src="/imge.jpg" alt="Engagement Modal" />
       </ModalContent>
     </ModalOverlay>
   ) : null

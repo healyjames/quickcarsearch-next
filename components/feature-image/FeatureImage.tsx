@@ -74,7 +74,7 @@ export const FeatureImage = () => {
         <div>
             <FeatureImageContainerOuter>
                 <ImageTag>
-                    <a href="https://unsplash.com/@martinkatler" target="_blank">
+                    <a href="https://unsplash.com/@martinkatler" target="_blank" rel="noreferrer">
                         <p><i className="fas fa-camera"></i><span>Martin Katler</span></p>
                     </a>
                 </ImageTag>

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Link from 'next/link'
 import Image from 'next/image'
 
 import styled from 'styled-components'
@@ -31,7 +31,7 @@ export const Header = (props: HeaderProps) => {
 		<div id={'home'}>
 			<div>
 				<HeaderContainerInner>
-					<a href="/" tabIndex={-1}>
+					<Link href="/" tabIndex={-1}>
 						<Image
 							src={"/assets/logo/" + props.logo}
 							alt="Picture of the author"
@@ -39,7 +39,7 @@ export const Header = (props: HeaderProps) => {
 							height="50"
 							style={{width: '75px', height: 'auto'}}
 						/>
-					</a>
+					</Link>
 					<div style={{transform: 'scale(0.85)'}}>
 						<Image
 							src={"/assets/logo/" + props.acronym}

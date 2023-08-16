@@ -60,7 +60,7 @@ export const FormItem = (props: FormItemProps) => {
 
     return(
         <StyledFormItem>
-            <Budget htmlFor="budget">What's your budget?</Budget>
+            <Budget htmlFor="budget">What&apos;s your budget?</Budget>
             <FormInputItem>
                 <Currency>£</Currency>
                 <input

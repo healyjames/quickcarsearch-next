@@ -171,7 +171,7 @@ const ResultsPage = () => {
                     <HeadingContainerOuter>
                         <HeadingContainerInner>
                             <Heading>
-                                <StyledH1>Here's what we found</StyledH1>
+                                <StyledH1>Here&apos;s what we found</StyledH1>
                                 <div style={{
                                     display: 'flex',
                                     flexDirection: 'row',

@@ -54,7 +54,7 @@ const BudgetErrorMessage = () => {
                 </HeadingContainerInner>
             </HeadingContainerOuter>
             <MessageContainer>
-                <p>We can't retrieve any data for you, maybe try again? Idk</p>
+                <p>We can&apos;t retrieve any data for you, maybe try again? Idk</p>
                 <Button as="a" href="/" fullWidth={false} invertedColor={true}>Go home</Button>
             </MessageContainer>
         </React.Fragment>
