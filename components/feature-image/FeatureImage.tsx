@@ -87,6 +87,8 @@ export const FeatureImage = () => {
                         loading="eager"
                         sizes="(max-width: 979px) 100vw,
                             (min-width: 1200px) 50vw"
+                        width={1200}
+                        height={800}
                         decoding="async" 
                         alt="Orange Lambourghini Huracan parked on the street" />
                 </FeatureImageContainer>
