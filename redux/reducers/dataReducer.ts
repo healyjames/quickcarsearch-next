@@ -1,13 +1,10 @@
-import { Dispatch } from 'redux'
 import { DataAction } from '../actions/dataAction'
 import { DataState, Cars } from '../types'
 
-// Initial state
 const initialState: DataState = {
   data: null,
 }
 
-// Reducer
 const dataReducer = (state = initialState, action: DataAction): DataState => {
   switch (action.type) {
     case 'SET_DATA':
@@ -20,13 +17,10 @@ const dataReducer = (state = initialState, action: DataAction): DataState => {
   }
 }
 
-// Action creator
-export function fetchData(data: Cars[]): (dispatch: Dispatch<DataAction>) => void {
-  return async (dispatch: Dispatch<DataAction>) => {
-    dispatch({
-      type: 'SET_DATA',
-      payload: data,
-    })
+export function setData(data: Cars[]): DataAction {
+  return {
+    type: 'SET_DATA',
+    payload: data,
   }
 }
 
