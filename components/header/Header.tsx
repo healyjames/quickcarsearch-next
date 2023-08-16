@@ -40,7 +40,7 @@ export const Header = (props: HeaderProps) => {
 							style={{width: '75px', height: 'auto'}}
 						/>
 					</Link>
-					<div style={{transform: 'scale(0.85)'}}>
+					<div style={{transform: 'scale(0.85)', willChange: 'transform'}}>
 						<Image
 							src={"/assets/logo/" + props.acronym}
 							alt="Picture of the author"

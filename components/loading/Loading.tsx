@@ -28,6 +28,7 @@ const BounceAnimation = keyframes`
 `;
 
 const LoadingAnimation = styled.div`
+  will-change: transform;
   display: flex;
   justify-content: center;
   align-items: center;

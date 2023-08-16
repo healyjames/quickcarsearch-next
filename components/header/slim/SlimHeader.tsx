@@ -16,6 +16,7 @@ const HeaderContainerInner = styled.div`
 `;
 
 const AcronymContainer = styled.div`
+	will-change: transform;
   	transform: scale(0.85);
 	margin-left: 1rem;
 `;

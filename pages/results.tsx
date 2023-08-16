@@ -250,6 +250,7 @@ const ResultsPage = () => {
                                                 width={12} 
                                                 height={12}
                                                 style={{
+                                                    willChange: 'transform',
                                                     transform: 'rotate(90deg)'
                                                 }}
                                                  />
