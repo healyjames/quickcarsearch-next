@@ -39,3 +39,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 `npm install`
 `npm run build`
 `npm start`
+
+
+## Docker
+`docker build -t quickcarsearch:1.0.0 .`
+`docker run -p 3000:3000 -d quickcarsearch:1.0.0` 
