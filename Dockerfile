@@ -10,7 +10,6 @@ RUN addgroup --system --gid 1001 nodejs && \
 
 COPY . .
 RUN npm ci
-RUN ls
 
 EXPOSE 3000
 ENV PORT 3000
