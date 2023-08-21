@@ -1,0 +1,32 @@
+name: quickcarsearch
+namespace: quickcarsearch
+version: 1.0.0
+replicaCount: 1
+image:
+  repository: healyjames97/quickcarsearch:1.0.0
+  name: quickcarsearch
+  pullPolicy: IfNotPresent
+resources:
+  limits:
+    cpu: 1
+    memory: 500Mi
+  requests:
+    cpu: 200m
+    memory: 400Mi
+healthcheck:
+  path: /healthcheck
+  port: 3000
+  delay: 30
+  period: 30
+update:
+  surge: 1
+  unavailable: 1
+service:
+  type: NodePort
+  internalPort: 3000
+  externalPort: 32556
+env:
+  IMAGES_PATH: /images
+annotations:
+  prometheus.io/port: '8000'
+  prometheus.io/scrape: 'true'

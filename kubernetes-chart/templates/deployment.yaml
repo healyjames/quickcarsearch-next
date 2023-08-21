@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+      matchLabels:
+        run: {{ template "fullname" . }}
+  strategy:
+    rollingUpdate:
+      {{- with .Values.update }}
+      maxSurge: {{ .surge }}
+      maxUnavailable: {{ .unavailable }}
+      {{- end }}
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: {{ template "fullname" . }}
+      {{- if .Values.annotations }}
+      annotations:
+        {{- range $key, $val := .Values.annotations }}
+        {{ $key }}: {{ $val | quote }}
+        {{- end }}
+      {{- end }}
+
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.version }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{- with .Values.healthcheck }}
+        livenessProbe:
+          httpGet:
+            path: {{ .path }}
+            port: {{ .port }}
+          initialDelaySeconds: {{ .delay }}
+          periodSeconds: {{ .period }}
+        {{- end }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+        ports:
+        - containerPort: {{ .Values.service.internalPort }}
+        {{- if .Values.env }}
+        env:
+        {{- range $key, $val := .Values.env }}
+        - name: {{ $key }}
+          value: {{ $val | quote }}
+        {{- end }}
+        {{- end }}
