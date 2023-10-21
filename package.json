@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.3",
+    "@types/node": "^20.8.7",
     "@types/styled-components": "^5.1.26",
     "eslint": "8.23.1",
     "eslint-config-next": "^13.1.6"
