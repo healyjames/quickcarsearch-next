@@ -8,8 +8,11 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-COPY . .
+COPY package*.json ./
 RUN npm ci
+
+COPY . .
+RUN npm run build
 
 EXPOSE 3000
 ENV PORT 3000
