@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+#Sitemap file
+Sitemap: https://www.quickcarsearch.io/sitemapindex.xml
