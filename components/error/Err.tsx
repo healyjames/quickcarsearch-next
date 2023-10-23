@@ -29,7 +29,7 @@ export const Err: NextPage<ErrProps> = ({code}) => {
     401: 'Unauthorized: Authentication failed or user does not have permissions for the requested operation.',
     403: 'Forbidden: The server understood the request, but it refuses to fulfill it.',
     404: 'Not Found: The requested resource could not be found on the server.',
-    500: 'Internal Server Error: A generic error message, given when no more specific message is suitable.'
+    500: 'Internal Server Error: Something has gone wrong on our end.'
   }
 
   const errorText = code ? errorMessages[code] || 'An error occurred.' : 'An error occurred.';
