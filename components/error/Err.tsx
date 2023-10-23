@@ -1,6 +1,8 @@
+import React from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 
 interface ErrProps {
   code: number | undefined
@@ -75,4 +77,8 @@ export const Err: NextPage<ErrProps> = ({code}) => {
       </p>
     </div>
   )
+}
+
+Err.propTypes = {
+  code: PropTypes.number,
 }
