@@ -9,6 +9,8 @@ export const StyledFormItem = styled.div`
 `
 
 const FormInputItem = styled.div`
+    position: relative;
+
     input::placeholder {
         color: ${props => props.theme.colors.neutrals.regular};
     }
@@ -18,7 +20,7 @@ const FormInputItem = styled.div`
         border-radius: ${props => props.theme.border.radius}rem;
         box-sizing: border-box;
         padding: ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 0.75).toFixed(2)}rem ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 1.5).toFixed(2)}rem;
-        font-size: ${props => (props.theme.font.size * 0.8).toFixed(2)}rem;
+        font-size: ${props => (props.theme.font.size / 1.2).toFixed(2)}rem;
         width: 100%;
         margin-top: ${props => props.theme.core.padding / 2}rem;
         outline-color: ${props => props.theme.colors.brand};
@@ -28,14 +30,23 @@ const FormInputItem = styled.div`
             transition: all 0.1s ease-in-out;
         `}
     }
+
+    input:focus + .currency-symbol,
+    input:not(:placeholder-shown) + .currency-symbol {
+        opacity: 1;
+    }
 `
 
 const Currency = styled.span`
     position: absolute;
-    margin-top: 21px;
+    left: 0;
+    margin-top: 19px;
     margin-left: 10px;
     color: ${props => props.theme.colors.foreground};
-    font-size: ${props => props.theme.font.size}rem;
+    font-size: ${props => (props.theme.font.size / props.theme.font.size)}rem;
+
+    opacity: 0;
+    transition: opacity 0.1s;
 `
 
 const Budget = styled.label`
@@ -62,7 +73,6 @@ export const FormItem = (props: FormItemProps) => {
         <StyledFormItem>
             <Budget htmlFor="budget">What&apos;s your budget?</Budget>{/* Needs to be hidden visually but avaulable for screen readers */}
             <FormInputItem>
-                <Currency>£</Currency>{/* Should appear once input is focused on */}
                 <input
                     type="text" 
                     name="budget" 
@@ -78,6 +88,7 @@ export const FormItem = (props: FormItemProps) => {
                         props.setBudget(formattedValue.replace(/[^\d.]/g, ''));
                     }}
                     required />
+                    <Currency className="currency-symbol">£</Currency>{/* Should appear once input is focused on */}
             </FormInputItem>
         </StyledFormItem>
     )
