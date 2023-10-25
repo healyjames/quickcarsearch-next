@@ -1,19 +1,38 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import { StyledFormItem } from "../formItem/FormItem"
-import { Button } from '../../button/Button'
+const SubmitButton = styled.button`
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    border-top-right-radius: ${props => props.theme.border.radius}rem;
+    border-bottom-right-radius: ${props => props.theme.border.radius}rem;
+
+    background-color: transparent;
+    border: none;
+    padding: ${props => props.theme.core.padding}rem;
+    margin: 0;
+
+    height: 100%;
+    width: 46px;
+
+    transition: background-color 0.1s ease-in-out;
+
+    &:focus, &:hover {
+        background-color: ${props => props.theme.colors.brand};
+    }
+`
 
 export const FormSubmit = () => {
     return(
-        <StyledFormItem>
-            <Button 
-                type="submit" 
-                form="main_form" 
-                value="Submit"
-                fullWidth={true}
-            >
-                Search
-            </Button>
-        </StyledFormItem>
+        <SubmitButton 
+            type="submit" 
+            form="main_form" 
+            value="Search"
+            className="submit-button"
+        >
+            S
+        </SubmitButton>
     )
 }

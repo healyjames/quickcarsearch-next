@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styled, { css } from "styled-components"
+import styled from 'styled-components'
 
 export const StyledFormItem = styled.div`
     & ~ & {
@@ -22,25 +22,30 @@ const FormInputItem = styled.div`
         padding: ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 0.75).toFixed(2)}rem ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 1.5).toFixed(2)}rem;
         font-size: ${props => (props.theme.font.size / 1.2).toFixed(2)}rem;
         width: 100%;
-        margin-top: ${props => props.theme.core.padding / 2}rem;
         outline-color: ${props => props.theme.colors.brand};
         border: none;
-
-        ${(props) => css`
-            transition: all 0.1s ease-in-out;
-        `}
+        transition: all 0.1s ease-in-out;
     }
 
-    input:focus + .currency-symbol,
+    
     input:not(:placeholder-shown) + .currency-symbol {
         opacity: 1;
+    }
+
+    @media (max-width: ${props => props.theme.breakpoints.lg}px) {
+        input:focus ~ .submit-button {
+            background-color: rgba(255,255,255,0.2);
+        }
+        input:not(:placeholder-shown) ~ .submit-button {
+            background-color: ${props => props.theme.colors.brand};
+        }
     }
 `
 
 const Currency = styled.span`
     position: absolute;
     left: 0;
-    margin-top: 19px;
+    margin-top: ${props => props.theme.core.padding}rem;
     margin-left: 10px;
     color: ${props => props.theme.colors.foreground};
     font-size: ${props => (props.theme.font.size / props.theme.font.size)}rem;
@@ -55,7 +60,8 @@ const Budget = styled.label`
 
 interface FormItemProps {
     budget: string
-    setBudget: (value: string) => void;
+    setBudget: (value: string) => void
+    children: React.ReactNode
 }
 
 export const FormItem = (props: FormItemProps) => {
@@ -71,7 +77,7 @@ export const FormItem = (props: FormItemProps) => {
 
     return(
         <StyledFormItem>
-            <Budget htmlFor="budget">What&apos;s your budget?</Budget>{/* Needs to be hidden visually but avaulable for screen readers */}
+            {/* <Budget htmlFor="budget">What&apos;s your budget?</Budget>Needs to be hidden visually but avaulable for screen readers */}
             <FormInputItem>
                 <input
                     type="text" 
@@ -89,6 +95,7 @@ export const FormItem = (props: FormItemProps) => {
                     }}
                     required />
                     <Currency className="currency-symbol">£</Currency>{/* Should appear once input is focused on */}
+                    {props.children}
             </FormInputItem>
         </StyledFormItem>
     )
