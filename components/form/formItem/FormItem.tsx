@@ -14,15 +14,15 @@ const FormInputItem = styled.div`
     }
 
     input[type=text] {
-        border: ${props => props.theme.border.width}px ${props => props.theme.border.style} ${props => props.theme.colors.foreground};
+        background-color: ${props => props.theme.colors.backgroundAlt};
         border-radius: ${props => props.theme.border.radius}rem;
         box-sizing: border-box;
         padding: ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 0.75).toFixed(2)}rem ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 1.5).toFixed(2)}rem;
-        background: transparent;
-        font-size: ${props => props.theme.font.size}rem;
+        font-size: ${props => (props.theme.font.size * 0.8).toFixed(2)}rem;
         width: 100%;
         margin-top: ${props => props.theme.core.padding / 2}rem;
         outline-color: ${props => props.theme.colors.brand};
+        border: none;
 
         ${(props) => css`
             transition: all 0.1s ease-in-out;
@@ -60,9 +60,9 @@ export const FormItem = (props: FormItemProps) => {
 
     return(
         <StyledFormItem>
-            <Budget htmlFor="budget">What&apos;s your budget?</Budget>
+            <Budget htmlFor="budget">What&apos;s your budget?</Budget>{/* Needs to be hidden visually but avaulable for screen readers */}
             <FormInputItem>
-                <Currency>£</Currency>
+                <Currency>£</Currency>{/* Should appear once input is focused on */}
                 <input
                     type="text" 
                     name="budget" 
@@ -70,7 +70,7 @@ export const FormItem = (props: FormItemProps) => {
                     min={0} 
                     maxLength={9} 
                     step={10} 
-                    placeholder="20,000..." 
+                    placeholder="What's your budget?" 
                     pattern="^[0-9,.]*$"
                     value={formatCurrency(props.budget)} 
                     onChange={(event) => {
