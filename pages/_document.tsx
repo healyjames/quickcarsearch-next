@@ -65,10 +65,6 @@ class MyDocument extends Document {
             type="image/png"
             href="/assets/logo/logo-icon-circle-orange.svg"
           />
-          <script
-            src="https://kit.fontawesome.com/75a401b8c1.js"
-            crossOrigin="anonymous"
-          />
         </Head>
         <body>
           <Main />
