@@ -37,7 +37,7 @@ export const Header = (props: HeaderProps) => {
 							alt="Picture of the author"
 							width="60"
 							height="50"
-							style={{width: '75px', height: 'auto'}}
+							style={{width: '65px', height: 'auto'}}
 						/>
 					</Link>
 					<div style={{transform: 'scale(0.85)', willChange: 'transform'}}>
