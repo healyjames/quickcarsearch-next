@@ -13,6 +13,7 @@ export interface Theme extends DefaultTheme {
         }
         foreground: string
         background: string
+        backgroundAlt: string
     }
     font: {
         family: {
@@ -55,7 +56,8 @@ export const BrandConfig: Theme = {
             lightest: '#EBEBEB'
         },
         foreground: '#FFFFFF',
-        background: '#131416'
+        background: '#131416',
+        backgroundAlt: '#26282C'
     },
     font: {
         family: {
@@ -76,12 +78,12 @@ export const BrandConfig: Theme = {
         grid: {
             gap: 1
         },
-        maxWidth: 1600,
+        maxWidth: 2000,
     },
     border: {
         color: '#E6EAEE',
         radius: .75, //rem
-        width: 2, //px
+        width: 3, //px
         style: 'solid'
     }
 };
