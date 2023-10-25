@@ -22,11 +22,16 @@ const FormInputItem = styled.div`
         padding: ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 0.75).toFixed(2)}rem ${props => props.theme.core.padding}rem ${props => (props.theme.core.padding * 1.5).toFixed(2)}rem;
         font-size: ${props => (props.theme.font.size / 1.2).toFixed(2)}rem;
         width: 100%;
-        outline-color: ${props => props.theme.colors.brand};
         border: none;
+        outline: none;
         transition: all 0.1s ease-in-out;
     }
 
+    input[type=text]:focus {
+        outline-color: ${props => props.theme.colors.brand};
+        outline-style: ${props => props.theme.border.style};
+        outline-width: ${props => props.theme.border.width}px;
+    }
     
     input:not(:placeholder-shown) + .currency-symbol {
         opacity: 1;
@@ -53,9 +58,16 @@ const Currency = styled.span`
     opacity: 0;
     transition: opacity 0.1s;
 `
-
+// Visually hidden but accessible for screen readers
+// Source: https://www.a11yproject.com/posts/how-to-hide-content/
 const Budget = styled.label`
-    margin-bottom: ${props => props.theme.core.margin / 2}rem;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 `
 
 interface FormItemProps {
@@ -77,7 +89,7 @@ export const FormItem = (props: FormItemProps) => {
 
     return(
         <StyledFormItem>
-            {/* <Budget htmlFor="budget">What&apos;s your budget?</Budget>Needs to be hidden visually but avaulable for screen readers */}
+            <Budget htmlFor="budget">What&apos;s your budget?</Budget> {/*Needs to be hidden visually but avaulable for screen readers*/}
             <FormInputItem>
                 <input
                     type="text" 

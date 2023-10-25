@@ -107,6 +107,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
     form > fieldset {
         border: none;
         padding: 0;
+        margin: 0;
     }
 
     header {

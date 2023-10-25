@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 const SubmitButton = styled.button`
     position: absolute;
@@ -32,7 +33,7 @@ export const FormSubmit = () => {
             value="Search"
             className="submit-button"
         >
-            S
+            <Image src="/assets/icons/magnifying-glass-solid.svg" alt="Chevron Down" width={16} height={16} />
         </SubmitButton>
     )
 }
