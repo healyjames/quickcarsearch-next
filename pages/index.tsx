@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import styled from 'styled-components'
 import Head from "next/head"
 
 import { Header } from "../components/header/Header"
@@ -7,9 +7,41 @@ import { Heading, HeadingH1, HeadingH2 } from "../components/heading/Heading"
 import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
-import { Main } from "../components/layout/Main"
-import { Layout } from "../components/layout/Layout"
 // import EngagementModal from '../components/ads/EngagementModal'
+
+const StyledLayout = styled.div`
+    margin: auto 0;
+
+    @media (min-width: ${props => props.theme.breakpoints.lg}px) {
+        padding: ${props => (props.theme.core.padding * 6).toFixed(2)}rem;
+    }
+`
+
+const ContentWrapper = styled.div`
+  @media (max-width: ${(props) => props.theme.breakpoints.lg}px) {
+    padding: ${props => (props.theme.core.padding * 3).toFixed(2)}rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+`
+
+const HeaderWrapper = styled.div`
+  @media (max-width: ${(props) => props.theme.breakpoints.lg}px) {
+    background-color: ${props => (props.theme.colors.brand)};
+    padding: ${props => (props.theme.core.padding).toFixed(2)}rem;
+  }
+`
+
+const StyledMain = styled.main`
+  width: 100%;
+  min-height: 100vh;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.lg}px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-columns: 40% 60%;
+  }
+`
 
 const Home = () => {
 
@@ -44,18 +76,22 @@ const Home = () => {
 
       {/* <EngagementModal /> */}
 
-      <Main page="home">
-        <Layout>
+      <StyledMain>
+        <StyledLayout>
+          <HeaderWrapper>
             <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+          </HeaderWrapper>
+          <ContentWrapper>
             <Heading>
               <HeadingH1>Find your next performance car <span>the easy way.</span></HeadingH1>
               <HeadingH2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine.</HeadingH2>
             </Heading>
             <Form />
             <HorizontalAd />
-        </Layout>
+          </ContentWrapper>
+        </StyledLayout>
         {renderFeatureImage && <FeatureImage />}
-      </Main>
+      </StyledMain>
     </React.Fragment>
   )
 }
