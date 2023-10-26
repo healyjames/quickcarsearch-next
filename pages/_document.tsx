@@ -35,7 +35,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="google-adsense-account" content="ca-pub-2248724540494118" />
           <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
           <link
             rel="preconnect"
