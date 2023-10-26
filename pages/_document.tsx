@@ -35,7 +35,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="google-adsense-account" content="ca-pub-2248724540494118" />
           <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
           <link
             rel="preconnect"
@@ -64,10 +63,6 @@ class MyDocument extends Document {
             rel="icon"
             type="image/png"
             href="/assets/logo/logo-icon-circle-orange.svg"
-          />
-          <script
-            src="https://kit.fontawesome.com/75a401b8c1.js"
-            crossOrigin="anonymous"
           />
         </Head>
         <body>

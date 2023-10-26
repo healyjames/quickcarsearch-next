@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Image from 'next/image'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const ImageTag = styled.div`
     z-index: 1;
@@ -69,7 +69,30 @@ const FeatureImageContainerOuter = styled.div`
     }
 `
 
+const shimmer = keyframes`
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+`
+
+const FeatureImageSkeleton = styled.div`
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 10%, #C2C2C2 75%, #f0f0f0 100%);
+  background-size: 200% 100%;
+  animation: ${shimmer} 2s linear infinite;
+`
+
 export const FeatureImage = () => {
+    const [imageLoaded, setImageLoaded] = useState(false)
+    
+    const handleImageLoad = () => {
+        setImageLoaded(true);
+    }
+
     return(
         <div>
             <FeatureImageContainerOuter>
@@ -80,6 +103,7 @@ export const FeatureImage = () => {
                 </ImageTag>
 
                 <FeatureImageContainer>
+                    {imageLoaded ? null : <FeatureImageSkeleton />}
                     <Image
                         src="/assets/images/home-image.webp" 
                         fill
@@ -88,7 +112,9 @@ export const FeatureImage = () => {
                         sizes="(max-width: 979px) 100vw,
                             (min-width: 1200px) 50vw"
                         decoding="async" 
-                        alt="Orange Lambourghini Huracan parked on the street" />
+                        alt="Orange Lambourghini Huracan parked on the street"
+                        onLoad={handleImageLoad}
+                        onError={() => setImageLoaded(true)} />
                 </FeatureImageContainer>
             </FeatureImageContainerOuter>
         </div>
