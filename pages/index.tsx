@@ -7,14 +7,25 @@ import { Heading, HeadingH1, HeadingH2 } from "../components/heading/Heading"
 import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
+import { SocialIcons } from '../components/social-icons/SocialIcons'
 // import EngagementModal from '../components/ads/EngagementModal'
 
 const StyledLayout = styled.div`
     margin: auto 0;
+    @media (max-width: ${(props) => props.theme.breakpoints.lg}px) {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
     @media (min-width: ${props => props.theme.breakpoints.lg}px) {
-        padding: ${props => (props.theme.core.padding * 6).toFixed(2)}rem;
+        padding: 0 ${props => (props.theme.core.padding * 3).toFixed(2)}rem;
     }
+
+    @media (min-width: ${props => props.theme.breakpoints.xl}px) {
+      padding: 0 ${props => (props.theme.core.padding * 6).toFixed(2)}rem;
+  }
 `
 
 const ContentWrapper = styled.div`
@@ -22,6 +33,10 @@ const ContentWrapper = styled.div`
     padding: ${props => (props.theme.core.padding * 3).toFixed(2)}rem;
     max-width: 600px;
     margin: 0 auto;
+  }
+
+  @media (max-width: 300px) {
+    padding: ${props => (props.theme.core.padding * 2).toFixed(1)}rem;
   }
 `
 
@@ -89,6 +104,7 @@ const Home = () => {
             <Form />
             <HorizontalAd />
           </ContentWrapper>
+          <SocialIcons />
         </StyledLayout>
         {renderFeatureImage && <FeatureImage />}
       </StyledMain>
