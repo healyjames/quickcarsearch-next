@@ -15,15 +15,6 @@ const HeaderContainerInner = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: baseline;
-	border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} ${props => props.theme.colors.neutrals.lightest};
-	padding-bottom: ${props => props.theme.core.padding}rem;
-	margin-bottom: ${props => (props.theme.core.margin * 2).toFixed(2)}rem;
-
-	@media (min-width: ${props => props.theme.breakpoints.lg}px) {
-		border-bottom: none;
-        padding-bottom: 0;
-        margin-bottom: 0;
-	}
 `
 
 export const Header = (props: HeaderProps) => {
