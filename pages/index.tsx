@@ -8,6 +8,7 @@ import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { SocialIcons } from '../components/social-icons/SocialIcons'
+import Script from 'next/script'
 // import EngagementModal from '../components/ads/EngagementModal'
 
 const StyledLayout = styled.div`
@@ -87,6 +88,7 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0,user-scalable=yes" property="og:viewport" key="viewport" />
         <meta name="mobile-web-app-capable" content="yes" property="og:mobile_webapp" key="mobile_webapp" />
         <meta name="apple-mobile-web-app-capable" content="yes" property="og:apple_webapp" key="apple_webapp" />
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2248724540494118" crossOrigin="anonymous" />
       </Head>
 
       {/* <EngagementModal /> */}
