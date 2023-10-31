@@ -2,10 +2,11 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import Image from "next/image"
 
-const FloatingInfoBoxContainer = styled.div`
+const FloatingInfoBoxContainer = styled.div<{isClosing: boolean}>`
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  left: ${(props) => (props.isClosing ? '-100%' : '20px')};
+  transition: left 0.5s;
   padding: ${(props) => (props.theme.core.padding / 2).toFixed(1)}rem ${(props) => props.theme.core.padding}rem;
   border-radius: ${(props) => props.theme.border.radius}rem;
   background-color: ${(props) => props.theme.colors.neutrals.darkest};
@@ -38,21 +39,26 @@ const XmarkContainer = styled.span`
 
 export const FloatingInfoBox = () => {
   const [isXmarkVisible, setIsXmarkVisible] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
 
   const handleHover = () => {
     setIsXmarkVisible(true)
-  }
+  };
 
   const handleClick = () => {
-    const element = document.getElementById("floating-info-box");
-    if (element) {
-      element.remove();
-    }
+    setIsClosing(true)
+    setTimeout(() => {
+      const element = document.getElementById("floating-info-box")
+      if (element) {
+        element.remove()
+      }
+    }, 500)
   }
 
   return (
     <FloatingInfoBoxContainer
       id="floating-info-box"
+      isClosing={isClosing}
       onMouseEnter={handleHover}
       onMouseLeave={() => setIsXmarkVisible(false)}
       onClick={handleClick}
@@ -64,10 +70,6 @@ export const FloatingInfoBox = () => {
             alt="X Mark"
             width={12}
             height={12}
-            style={{
-              willChange: "transform",
-              transform: "rotate(90deg)",
-            }}
           />
         </XmarkContainer>
       )}
