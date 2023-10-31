@@ -8,6 +8,7 @@ import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { SocialIcons } from '../components/social-icons/SocialIcons'
+import { FloatingInfoBox } from '../components/floating-info-box/FloatingInfoBox'
 // import EngagementModal from '../components/ads/EngagementModal'
 
 const StyledLayout = styled.div`
@@ -105,6 +106,7 @@ const Home = () => {
             <HorizontalAd />
           </ContentWrapper>
           <SocialIcons />
+          <FloatingInfoBox />
         </StyledLayout>
         {renderFeatureImage && <FeatureImage />}
       </StyledMain>
