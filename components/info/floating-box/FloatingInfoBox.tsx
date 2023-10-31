@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Image from "next/image"
 import Cookies from "js-cookie"
+import { Version } from "../Version"
 
 const FloatingInfoBoxContainer = styled.div<{isClosing: boolean}>`
   position: fixed;
@@ -19,7 +20,6 @@ const FloatingInfoBoxContainer = styled.div<{isClosing: boolean}>`
 
   p {
     font-size: ${(props) => (props.theme.font.size * 0.6).toFixed(1)}rem;
-    margin: 0;
   }
 `
 
@@ -86,7 +86,7 @@ export const FloatingInfoBox = () => {
           />
         </XmarkContainer>
       )}
-      <p>Beta Version</p>
+      <Version />
     </FloatingInfoBoxContainer>
   )
 }
