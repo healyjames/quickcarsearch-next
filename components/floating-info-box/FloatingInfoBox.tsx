@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Image from "next/image"
+import Cookies from "js-cookie"
 
 const FloatingInfoBoxContainer = styled.div<{isClosing: boolean}>`
   position: fixed;
@@ -39,13 +40,21 @@ const XmarkContainer = styled.span`
 
 export const FloatingInfoBox = () => {
   const [isXmarkVisible, setIsXmarkVisible] = useState(false)
-  const [isClosing, setIsClosing] = useState(false)
+  const [isClosing, setIsClosing] = useState(true) // Hidden by default
+
+  useEffect(() => {
+    const isXmarkClicked = Cookies.get("isXmarkClicked");
+
+    isXmarkClicked === "true" ? setIsClosing(true) : setIsClosing(false)
+
+  }, [])
 
   const handleHover = () => {
     setIsXmarkVisible(true)
-  };
+  }
 
   const handleClick = () => {
+    Cookies.set("isXmarkClicked", "true", { expires: 7 })
     setIsClosing(true)
     setTimeout(() => {
       const element = document.getElementById("floating-info-box")
@@ -53,6 +62,10 @@ export const FloatingInfoBox = () => {
         element.remove()
       }
     }, 500)
+  }
+
+  if (isClosing) {
+    return null
   }
 
   return (
