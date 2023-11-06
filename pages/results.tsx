@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router';
-import Image from 'next/image';
+import { useRouter } from 'next/router'
+import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
@@ -21,10 +21,10 @@ const ResultsBody = styled.ul`
     flex-wrap: nowrap;
     list-style-type: none;
     padding: 0;
-    margin-bottom: 0;
+    margin: 0;
 
-    li {
-        border-top: ${(props) => props.theme.border.width}px solid #333;
+    li:not(:first-child) {
+        border-top: ${(props) => props.theme.border.width}px ${(props) => props.theme.border.style} #333;
     }
 `
 
@@ -140,23 +140,91 @@ const LoadMoreButton = styled.button`
     }
 `
 
+const FilterButton = styled.button`
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    margin: 0 auto;
+    padding: ${(props) => (props.theme.core.padding * 2)}rem ${(props) => props.theme.core.margin}rem;
+    cursor: pointer;
+    border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #333;
+    text-align: left;
+    font-size: ${props => (props.theme.font.size * 0.8).toFixed(1)}rem;
+
+    &:hover {
+        background-color: ${(props) => props.theme.colors.backgroundAlt};
+        border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #474747;
+    }
+
+    &:focus, &:active {
+        background-color: rgba(232, 116, 12, 0.25);
+        border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #F4882A;
+    }
+
+    p {
+        margin: 0;
+    }
+`
+
+enum filters {
+    BHP = 'BHP',
+    ACCELERATION = 'ACCELERATION',
+    TORQUE = 'TORQUE',
+    PRICE = 'PRICE'
+}
+
 const ResultsPage = () => {
 
-    const router = useRouter();
+    const router = useRouter()
 
-    // Use the 'useSelector' hook to get the data from Redux store
     const data = useSelector((state: RootState) => state.data.data)
     const budget = useSelector((state: RootState) => state.budget.budget)
 
-    const [batchSize] = useState(8);
-    const [startIndex, setStartIndex] = useState(0);
-    const [endIndex, setEndIndex] = useState(batchSize);
+    const [batchSize] = useState(8)
+    const [startIndex, setStartIndex] = useState(0)
+    const [endIndex, setEndIndex] = useState(batchSize)
+    const [filter, setFilter] = useState(filters.ACCELERATION)
+    const [sortOrderToggle, setSortOrderToggle] = useState(false)
 
     const formattedBudget = parseFloat(budget).toLocaleString('en-GB', {
         style: 'currency',
         currency: 'GBP',
         minimumFractionDigits: 0
-    });
+    })
+
+    const handleFilterChange = (newFilter: filters) => {
+        if (newFilter === filter) { 
+            setSortOrderToggle(!sortOrderToggle) 
+        }
+        setFilter(newFilter)
+    }
+
+    const sortedData = (data: any) => {
+        const sortFunctions = {
+          [filters.ACCELERATION]: (a: any, b: any) =>
+          sortOrderToggle
+              ? parseFloat(a.acceleration) - parseFloat(b.acceleration)
+              : parseFloat(b.acceleration) - parseFloat(a.acceleration),
+      
+          [filters.PRICE]: (a: any, b: any) =>
+          sortOrderToggle
+              ? parseFloat(a.avg_price) - parseFloat(b.avg_price)
+              : parseFloat(b.avg_price) - parseFloat(a.avg_price),
+      
+          [filters.BHP]: (a: any, b: any) =>
+          sortOrderToggle
+              ? parseFloat(b.bhp) - parseFloat(a.bhp)
+              : parseFloat(a.bhp) - parseFloat(b.bhp),
+      
+          [filters.TORQUE]: (a: any, b: any) =>
+          sortOrderToggle
+              ? parseFloat(b.torque) - parseFloat(a.torque)
+              : parseFloat(a.torque) - parseFloat(b.torque),
+        }
+      
+        return [...data].sort(sortFunctions[filter])
+    }      
 
     return (
         <Main page={"results"}>  
@@ -189,14 +257,38 @@ const ResultsPage = () => {
                         <React.Fragment>
                             <ResultsContainer>
                                 <ResultsHead>
-                                    <div className='brand'>Filter - All matches</div>
-                                    <div className='bhp'>BHP</div>
-                                    <div className='acceleration'>0-60mph</div>
-                                    <div className='torque'>Torque</div>
-                                    <div className='price'>Price</div>
+                                    <FilterButton 
+                                        className='brand'
+                                    >
+                                        Filter - All matches
+                                    </FilterButton>
+                                    <FilterButton 
+                                        className='bhp'
+                                        onClick={() => handleFilterChange(filters.BHP)}
+                                    >
+                                        BHP
+                                    </FilterButton>
+                                    <FilterButton 
+                                        className='acceleration'
+                                        onClick={() => handleFilterChange(filters.ACCELERATION)}
+                                    >
+                                        0-60mph
+                                    </FilterButton>
+                                    <FilterButton 
+                                        className='torque'
+                                        onClick={() => handleFilterChange(filters.TORQUE)}
+                                    >
+                                        Torque
+                                    </FilterButton>
+                                    <FilterButton 
+                                        className='price'
+                                        onClick={() => handleFilterChange(filters.PRICE)}
+                                    >
+                                        Price
+                                    </FilterButton>
                                 </ResultsHead>
                                 <ResultsBody>
-                                    {data.slice(0, endIndex).map((car, index) => (
+                                    {sortedData(data.slice(0, endIndex)).map((car: any, index: any) => (
                                         <li key={index + startIndex}>
                                             <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
                                                 <ResultItem className='brand'>
