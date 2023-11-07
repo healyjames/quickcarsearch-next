@@ -179,14 +179,23 @@ const FilterButton = styled(FilterHeading)`
         border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #F4882A;
     }
 
-    img {
-        opacity: 0;
-        margin-right: ${(props) => props.theme.core.margin}rem;
+    &:focus::after, &:active::after {
+        opacity: 1 !important;
     }
 
-    &:hover img {
-        display: block;
+    &:hover::after {
         opacity: 0.5;
+    }
+
+    &::after {
+        opacity: 0;
+        content: '';
+        background-image: url('/assets/icons/arrow-up-down-solid.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
     }
 `
 
@@ -209,21 +218,6 @@ const ResultsPage = () => {
     const [endIndex, setEndIndex] = useState(batchSize)
     const [filter, setFilter] = useState(filters.ACCELERATION)
     const [sortOrderToggle, setSortOrderToggle] = useState(false)
-    const [renderFilterIcons, setRenderFilterIcons] = useState(false)
-
-    useEffect(() => {
-        const handleResize = () => {
-            setRenderFilterIcons(window.innerWidth > 979)
-        }
-    
-        window.addEventListener('resize', handleResize)
-    
-        handleResize()
-    
-        return () => {
-          window.removeEventListener('resize', handleResize)
-        }
-    }, [])
 
     const formattedBudget = parseFloat(budget).toLocaleString('en-GB', {
         style: 'currency',
@@ -305,36 +299,24 @@ const ResultsPage = () => {
                                         onClick={() => handleFilterChange(filters.BHP)}
                                     >
                                         BHP
-                                       {renderFilterIcons && ( 
-                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
-                                        )}
                                     </FilterButton>
                                     <FilterButton 
                                         className={filter === filters.ACCELERATION ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.ACCELERATION)}
                                     >
                                         0-60mph
-                                        {renderFilterIcons && ( 
-                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
-                                        )}
                                     </FilterButton>
                                     <FilterButton 
                                         className={filter === filters.TORQUE ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.TORQUE)}
                                     >
                                         Torque
-                                        {renderFilterIcons && ( 
-                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
-                                        )}
                                     </FilterButton>
                                     <FilterButton 
                                         className={filter === filters.PRICE ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.PRICE)}
                                     >
                                         Price
-                                        {renderFilterIcons && ( 
-                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
-                                        )}
                                     </FilterButton>
                                 </ResultsHead>
                                 <ResultsBody>
