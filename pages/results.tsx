@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
@@ -75,6 +75,14 @@ const ResultsHead = styled.div`
     @media (min-width: ${props => props.theme.breakpoints.md}px) {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+
+    .active {
+        background-color: rgba(232, 116, 12, 0.25);
+        border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #F4882A;
+        img {
+            opacity: 1 !important;
+        }
+    }
 `
 
 export const HeadingContainerOuter = styled.div`
@@ -140,18 +148,27 @@ const LoadMoreButton = styled.button`
     }
 `
 
-const FilterButton = styled.button`
+const FilterHeading = styled.button`
     display: block;
     width: 100%;
     background-color: transparent;
     border: none;
     margin: 0 auto;
     padding: ${(props) => (props.theme.core.padding * 2)}rem ${(props) => props.theme.core.margin}rem;
-    cursor: pointer;
     border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #333;
     text-align: left;
     font-size: ${props => (props.theme.font.size * 0.8).toFixed(1)}rem;
 
+    p {
+        margin: 0;
+    }
+`
+
+const FilterButton = styled(FilterHeading)`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
     &:hover {
         background-color: ${(props) => props.theme.colors.backgroundAlt};
         border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #474747;
@@ -162,8 +179,14 @@ const FilterButton = styled.button`
         border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} #F4882A;
     }
 
-    p {
-        margin: 0;
+    img {
+        opacity: 0;
+        margin-right: ${(props) => props.theme.core.margin}rem;
+    }
+
+    &:hover img {
+        display: block;
+        opacity: 0.5;
     }
 `
 
@@ -186,6 +209,21 @@ const ResultsPage = () => {
     const [endIndex, setEndIndex] = useState(batchSize)
     const [filter, setFilter] = useState(filters.ACCELERATION)
     const [sortOrderToggle, setSortOrderToggle] = useState(false)
+    const [renderFilterIcons, setRenderFilterIcons] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setRenderFilterIcons(window.innerWidth > 979)
+        }
+    
+        window.addEventListener('resize', handleResize)
+    
+        handleResize()
+    
+        return () => {
+          window.removeEventListener('resize', handleResize)
+        }
+    }, [])
 
     const formattedBudget = parseFloat(budget).toLocaleString('en-GB', {
         style: 'currency',
@@ -257,34 +295,46 @@ const ResultsPage = () => {
                         <React.Fragment>
                             <ResultsContainer>
                                 <ResultsHead>
-                                    <FilterButton 
+                                    <FilterHeading 
                                         className='brand'
                                     >
                                         Filter - All matches
-                                    </FilterButton>
+                                    </FilterHeading>
                                     <FilterButton 
-                                        className='bhp'
+                                        className={filter === filters.BHP ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.BHP)}
                                     >
                                         BHP
+                                       {renderFilterIcons && ( 
+                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
+                                        )}
                                     </FilterButton>
                                     <FilterButton 
-                                        className='acceleration'
+                                        className={filter === filters.ACCELERATION ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.ACCELERATION)}
                                     >
                                         0-60mph
+                                        {renderFilterIcons && ( 
+                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
+                                        )}
                                     </FilterButton>
                                     <FilterButton 
-                                        className='torque'
+                                        className={filter === filters.TORQUE ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.TORQUE)}
                                     >
                                         Torque
+                                        {renderFilterIcons && ( 
+                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
+                                        )}
                                     </FilterButton>
                                     <FilterButton 
-                                        className='price'
+                                        className={filter === filters.PRICE ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.PRICE)}
                                     >
                                         Price
+                                        {renderFilterIcons && ( 
+                                            <Image src="/assets/icons/arrow-up-down-solid.svg" alt="Filter arrows up and down" width={16} height={16} /> 
+                                        )}
                                     </FilterButton>
                                 </ResultsHead>
                                 <ResultsBody>
