@@ -226,23 +226,23 @@ const ResultsPage = () => {
     })
 
     const handleFilterChange = (newFilter: filters) => {
-        if (newFilter === filter) { 
-            setSortOrderToggle(!sortOrderToggle) 
-        }
+        if (newFilter === filter) {
+            setSortOrderToggle(!sortOrderToggle)
+        } 
         setFilter(newFilter)
     }
 
     const sortedData = (data: any) => {
         const sortFunctions = {
           [filters.ACCELERATION]: (a: any, b: any) =>
-          sortOrderToggle
+          !sortOrderToggle
               ? parseFloat(a.acceleration) - parseFloat(b.acceleration)
               : parseFloat(b.acceleration) - parseFloat(a.acceleration),
       
           [filters.PRICE]: (a: any, b: any) =>
-          sortOrderToggle
-              ? parseFloat(a.avg_price) - parseFloat(b.avg_price)
-              : parseFloat(b.avg_price) - parseFloat(a.avg_price),
+          !sortOrderToggle
+              ? parseFloat(b.avg_price) - parseFloat(a.avg_price)
+              : parseFloat(a.avg_price) - parseFloat(b.avg_price),
       
           [filters.BHP]: (a: any, b: any) =>
           sortOrderToggle
