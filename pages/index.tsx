@@ -94,7 +94,7 @@ const Home = () => {
       <StyledMain>
         <StyledLayout>
           <HeaderWrapper>
-            <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+            <Header id="home" logo="logo-icon-white.svg" />
           </HeaderWrapper>
           <ContentWrapper>
             <Heading>
