@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
 
 const ComingSoon = () => {
     const router = useRouter()
