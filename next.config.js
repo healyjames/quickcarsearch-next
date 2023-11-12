@@ -2,12 +2,25 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  rewrites: () => [
-    {
-      source: "/results",
-      destination: "/api/results",
-    },
-  ],
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/coming-soon',
+        permanent: false,
+      },
+      {
+        source: '/blog',
+        destination: '/coming-soon',
+        permanent: false,
+      },
+      {
+        source: '/store',
+        destination: '/coming-soon',
+        permanent: false,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
