@@ -25,7 +25,7 @@ const Sidebar = styled.div`
   background-color: ${props => (props.theme.colors.background)};
   overflow-x: hidden;
   transition: 0.5s;
-  padding: ${props => (props.theme.core.padding).toFixed(2)}rem 0;
+  padding-top: ${props => (props.theme.core.padding * 1.5).toFixed(2)}rem;
   z-index: 3;
 `
 
@@ -170,7 +170,7 @@ export const Header = (props: HeaderProps) => {
 							flexDirection: 'column',
 							flexWrap: 'nowrap',
 							alignItems: 'space-between',
-							height: '95vh',
+							height: '85vh',
 							justifyContent: 'space-between'
 						}}	
 					>
