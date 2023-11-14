@@ -16,7 +16,7 @@ const HeaderContainerInner = styled.div`
 	align-items: center;
 `
 
-const Sidebar = styled.div`
+const Sidebar = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
@@ -73,15 +73,17 @@ const NavCloseButton = styled.button`
 	}
 `
 
-const NavContainer = styled.div`
+const NavContainer = styled.ul`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin: ${props => (props.theme.core.margin * 2).toFixed(2)}rem 0;
+	padding: 0;
 `
 
-const NavItemInner = styled.div`
+const NavItemInner = styled.li`
+	list-style-type: none;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -91,11 +93,12 @@ const NavItemInner = styled.div`
 	gap: ${props => (props.theme.core.grid.gap)}rem;
 `
 
-const NavSubItemConainer = styled.div`
+const NavSubItemConainer = styled.ul`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: ${props => (props.theme.core.grid.gap / 2).toFixed(2)}rem; 
+	gap: ${props => (props.theme.core.grid.gap / 2).toFixed(2)}rem;
+	padding: 0;
 `
 
 const NavItem = styled.a`
@@ -119,6 +122,10 @@ const NavSubItem = styled.a`
 	&:hover {
 		border-bottom: 2px ${props => props.theme.border.style} ${props => (props.theme.colors.foreground)};
 	}
+`
+
+const NavSubItemInner = styled.li`
+	list-style-type: none;
 `
 
 export const Header = (props: HeaderProps) => {
@@ -155,6 +162,7 @@ export const Header = (props: HeaderProps) => {
 					style={{ 
 						width: sidebarOpen ? '250px' : '0' 
 					}}
+					aria-label="Main navigation menu"
 				>
 					<NavCloseButton onClick={toggleSidebar}>
 						<Image
@@ -222,13 +230,19 @@ export const Header = (props: HeaderProps) => {
 						</NavContainer>
 						<NavSubItemConainer>
 							<NavSubItem href="/terms">
-								Terms
+								<NavSubItemInner>
+									<p style={{margin: 0}}>Terms</p>
+								</NavSubItemInner>
 							</NavSubItem>
 							<NavSubItem href="/privacy">
-								Privacy
+								<NavSubItemInner>
+									<p style={{margin: 0}}>Privacy</p>
+								</NavSubItemInner>
 							</NavSubItem>
 							<NavSubItem href="/cookies">
-								Cookies
+								<NavSubItemInner>
+									<p style={{margin: 0}}>Cookies</p>
+								</NavSubItemInner>
 							</NavSubItem>
 						</NavSubItemConainer>
 					</div>
