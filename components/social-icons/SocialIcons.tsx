@@ -8,6 +8,8 @@ const SocialIconWrapper = styled.div`
 
     @media (max-width: ${props => props.theme.breakpoints.lg}px) {
         border-top: ${(props) => props.theme.border.width}px ${(props) => props.theme.border.style} ${(props) => props.theme.colors.foreground};
+        margin: ${(props) => props.theme.core.margin}rem 0 0 0;
+        padding: ${(props) => props.theme.core.margin}rem 0 0 0;
     }
 `
 
