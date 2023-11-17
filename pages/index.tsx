@@ -8,6 +8,8 @@ import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { SocialIcons } from '../components/social-icons/SocialIcons'
+import { FloatingInfoBox } from '../components/info/floating-box/FloatingInfoBox'
+import { InfoBanner } from '../components/info/banner/InfoBanner'
 // import EngagementModal from '../components/ads/EngagementModal'
 
 const StyledLayout = styled.div`
@@ -61,11 +63,11 @@ const StyledMain = styled.main`
 const Home = () => {
 
   // Hide feature image on mobiles
-  const [renderFeatureImage, setRenderFeatureImage] = useState(false)
+  const [hideOnMobile, setHideOnMobile] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
-      setRenderFeatureImage(window.innerWidth > 979)
+      setHideOnMobile(window.innerWidth > 979)
     }
 
     window.addEventListener('resize', handleResize)
@@ -94,7 +96,7 @@ const Home = () => {
       <StyledMain>
         <StyledLayout>
           <HeaderWrapper>
-            <Header id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+            <Header id="home" logo="logo-icon-white.svg" />
           </HeaderWrapper>
           <ContentWrapper>
             <Heading>
@@ -104,9 +106,12 @@ const Home = () => {
             <Form />
             <HorizontalAd />
           </ContentWrapper>
-          <SocialIcons />
+          <div>
+            <SocialIcons />
+            {hideOnMobile ? <FloatingInfoBox /> : <InfoBanner />}
+          </div>
         </StyledLayout>
-        {renderFeatureImage && <FeatureImage />}
+        {hideOnMobile && <FeatureImage />}
       </StyledMain>
     </React.Fragment>
   )
