@@ -13,7 +13,7 @@ const HeaderContainerInner = styled.div`
 	@media (min-width: ${props => props.theme.breakpoints.lg}px) {
         justify-content: flex-end;
     }
-`;
+`
 
 const AcronymContainer = styled.div`
 	will-change: transform;
@@ -24,7 +24,7 @@ const AcronymContainer = styled.div`
 const HomeContainer = styled.div`
 	background-color: ${(props) => props.theme.colors.brand};
 	padding: ${props => (props.theme.core.padding * 2).toFixed(2)}rem 0;
-`;
+`
 
 export const Header = () => {
 	return(
