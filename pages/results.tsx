@@ -30,7 +30,7 @@ const ResultsBody = styled.ul`
 
 const ResultContainerInner = styled.a`
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 10fr 8fr;
     padding: ${(props) => (props.theme.core.padding * 2)}rem 0;
 
     @media (min-width: ${props => props.theme.breakpoints.md}px) {
@@ -70,7 +70,7 @@ const ResultsPageContainer = styled.div`
 
 const ResultsHead = styled.div`
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 10fr 8fr;
 
     @media (min-width: ${props => props.theme.breakpoints.md}px) {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -150,6 +150,7 @@ const LoadMoreButton = styled.button`
 
 const FilterHeading = styled.button`
     display: block;
+    font-weight: bold;
     width: 100%;
     background-color: transparent;
     border: none;
@@ -166,6 +167,7 @@ const FilterHeading = styled.button`
 
 const FilterButton = styled(FilterHeading)`
     display: flex;
+    font-weight: bold;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
@@ -211,6 +213,7 @@ const SortByDropdownContainer = styled.div`
         border-radius: 0 ${props => props.theme.border.radius}rem ${props => props.theme.border.radius}rem ${props => props.theme.border.radius}rem;
         box-sizing: border-box;
         padding: ${props => props.theme.core.padding}rem;
+        margin-top: ${props => (props.theme.core.margin / 2).toFixed(2)}rem;
         font-size: ${props => (props.theme.font.size / 1.2).toFixed(2)}rem;
         width: 100%;
         border: none;
@@ -236,6 +239,20 @@ const SortByDropdownLabel = styled.label`
     background-color: ${props => props.theme.colors.backgroundAltAlt};
     padding: ${props => (props.theme.core.padding / 2)}rem ${props => props.theme.core.padding}rem;
     border-radius: ${props => props.theme.border.radius}rem ${props => props.theme.border.radius}rem 0 0;
+`
+
+const MobileResultItem = styled.div`
+    margin-bottom: ${props => props.theme.core.margin}rem;
+`
+
+const MobileResultItemHeading = styled.p`
+    margin: 0;
+`
+
+const MobileResultItemText = styled.p`
+    margin: 0;
+    font-size: ${props => props.theme.font.size}rem;
+    font-weight: bold;
 `
 
 enum filters {
@@ -366,9 +383,9 @@ const ResultsPage = () => {
                                     <FilterHeading 
                                         className='brand'
                                     >
-                                        Filter - All matches
+                                        Make &amp; model
                                     </FilterHeading>
-                                    {hideOnMobile && (
+                                    {hideOnMobile ?
                                         <React.Fragment>
                                             <FilterButton 
                                                 className={filter === filters.BHP ? 'active' : ''}
@@ -388,14 +405,19 @@ const ResultsPage = () => {
                                             >
                                                 Torque
                                             </FilterButton>
-                                        </React.Fragment>
-                                    )}
-                                    <FilterButton 
-                                        className={filter === filters.PRICE ? 'active' : ''}
-                                        onClick={() => handleFilterChange(filters.PRICE)}
-                                    >
-                                        Price
-                                    </FilterButton>
+                                            <FilterButton 
+                                                className={filter === filters.PRICE ? 'active' : ''}
+                                                onClick={() => handleFilterChange(filters.PRICE)}
+                                            >
+                                                Price
+                                            </FilterButton>
+                                        </React.Fragment> :
+                                        <FilterHeading 
+                                            className='brand'
+                                        >
+                                            Details
+                                        </FilterHeading>
+                                    }
                                 </ResultsHead>
                                 <ResultsBody>
                                     {sortedData(data.slice(0, endIndex)).map((car: any, index: any) => (
@@ -406,16 +428,44 @@ const ResultsPage = () => {
                                                     <div className='make'>{car.make}</div>
                                                     <div className='model'>{car.model} {car.variant}</div>
                                                 </ResultItem>
-                                                <ResultItem className='bhp'>{car.bhp}</ResultItem>
-                                                <ResultItem className='acceleration'>{car.acceleration}</ResultItem>
-                                                <ResultItem className='torque'>{car.torque}</ResultItem>
-                                                <ResultItem className='price'>{
-                                                    parseFloat(car.avg_price).toLocaleString('en-GB', {
-                                                        style: 'currency',
-                                                        currency: 'GBP',
-                                                        minimumFractionDigits: 0
-                                                    })
-                                                }</ResultItem>
+                                                {hideOnMobile ?
+                                                    <React.Fragment>
+                                                        <ResultItem className='bhp'>{car.bhp}</ResultItem>
+                                                        <ResultItem className='acceleration'>{car.acceleration}</ResultItem>
+                                                        <ResultItem className='torque'>{car.torque}</ResultItem>
+                                                        <ResultItem className='price'>{
+                                                            parseFloat(car.avg_price).toLocaleString('en-GB', {
+                                                                style: 'currency',
+                                                                currency: 'GBP',
+                                                                minimumFractionDigits: 0
+                                                            })
+                                                        }</ResultItem>
+                                                    </React.Fragment> :
+                                                    <ResultItem className='mobile'>
+                                                        <MobileResultItem>
+                                                            <MobileResultItemHeading>BHP</MobileResultItemHeading>
+                                                            <MobileResultItemText>{car.bhp}</MobileResultItemText>
+                                                        </MobileResultItem>
+                                                        <MobileResultItem>
+                                                            <MobileResultItemHeading>0-60mph</MobileResultItemHeading>
+                                                            <MobileResultItemText>{car.acceleration}</MobileResultItemText>
+                                                        </MobileResultItem>
+                                                        <MobileResultItem>
+                                                            <MobileResultItemHeading>Torque</MobileResultItemHeading>
+                                                            <MobileResultItemText>{car.torque}</MobileResultItemText>
+                                                        </MobileResultItem>
+                                                        <MobileResultItem>
+                                                            <MobileResultItemHeading>Price</MobileResultItemHeading>
+                                                            <MobileResultItemText>{
+                                                                parseFloat(car.avg_price).toLocaleString('en-GB', {
+                                                                    style: 'currency',
+                                                                    currency: 'GBP',
+                                                                    minimumFractionDigits: 0
+                                                                })
+                                                            }</MobileResultItemText>
+                                                        </MobileResultItem>
+                                                    </ResultItem>
+                                                }
                                             </ResultContainerInner>
                                         </li>
                                     ))}
