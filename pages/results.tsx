@@ -199,6 +199,45 @@ const FilterButton = styled(FilterHeading)`
     }
 `
 
+const SortByDropdownContainer = styled.div`
+    margin-bottom: ${props => (props.theme.core.margin * 2).toFixed(2)}rem;
+
+    select::placeholder {
+        color: ${props => props.theme.colors.neutrals.regular};
+    }
+
+    select {
+        background-color: ${props => props.theme.colors.backgroundAlt};
+        border-radius: 0 ${props => props.theme.border.radius}rem ${props => props.theme.border.radius}rem ${props => props.theme.border.radius}rem;
+        box-sizing: border-box;
+        padding: ${props => props.theme.core.padding}rem;
+        font-size: ${props => (props.theme.font.size / 1.2).toFixed(2)}rem;
+        width: 100%;
+        border: none;
+        outline: none;
+        transition: all 0.1s ease-in-out;
+        color: ${props => props.theme.colors.foreground};
+        appearance: none;
+        background-image: url('/assets/icons/chevron-down-solid.svg');
+        background-repeat: no-repeat;
+        background-position: right 0.8rem bottom 50%;
+        background-size: 12px 12px;
+    }
+
+    select:focus {
+        outline-color: ${props => props.theme.colors.brand};
+        outline-style: ${props => props.theme.border.style};
+        outline-width: ${props => props.theme.border.width}px;
+    }
+`
+
+const SortByDropdownLabel = styled.label`
+    font-size: ${props => (props.theme.font.size * 0.65).toFixed(1)}rem;
+    background-color: ${props => props.theme.colors.backgroundAltAlt};
+    padding: ${props => (props.theme.core.padding / 2)}rem ${props => props.theme.core.padding}rem;
+    border-radius: ${props => props.theme.border.radius}rem ${props => props.theme.border.radius}rem 0 0;
+`
+
 enum filters {
     BHP = 'BHP',
     ACCELERATION = 'ACCELERATION',
@@ -218,6 +257,21 @@ const ResultsPage = () => {
     const [endIndex, setEndIndex] = useState(batchSize)
     const [filter, setFilter] = useState(filters.ACCELERATION)
     const [sortOrderToggle, setSortOrderToggle] = useState(false)
+    const [hideOnMobile, setHideOnMobile] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+        setHideOnMobile(window.innerWidth > 979)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        handleResize()
+
+        return () => {
+        window.removeEventListener('resize', handleResize)
+        }
+    }, [])
 
     const formattedBudget = parseFloat(budget).toLocaleString('en-GB', {
         style: 'currency',
@@ -286,6 +340,26 @@ const ResultsPage = () => {
                     </HeadingContainerOuter>
 
                     <ResultsPageContainer>
+                        {!hideOnMobile && (
+                            <SortByDropdownContainer>
+                                <SortByDropdownLabel htmlFor='sortByDropdown'>
+                                    Sort by
+                                </SortByDropdownLabel>
+                                <select
+                                    value={filter}
+                                    onChange={(e) => handleFilterChange(
+                                        e.target.value as filters
+                                    )}
+                                    id='sortByDropdown'
+                                >
+                                    <option value={filters.BHP}>BHP</option>
+                                    <option value={filters.ACCELERATION}>0-60mph</option>
+                                    <option value={filters.TORQUE}>Torque</option>
+                                    <option value={filters.PRICE}>Price</option>
+                                </select>
+                            </SortByDropdownContainer>
+                        )}
+
                         <React.Fragment>
                             <ResultsContainer>
                                 <ResultsHead>
@@ -294,24 +368,28 @@ const ResultsPage = () => {
                                     >
                                         Filter - All matches
                                     </FilterHeading>
-                                    <FilterButton 
-                                        className={filter === filters.BHP ? 'active' : ''}
-                                        onClick={() => handleFilterChange(filters.BHP)}
-                                    >
-                                        BHP
-                                    </FilterButton>
-                                    <FilterButton 
-                                        className={filter === filters.ACCELERATION ? 'active' : ''}
-                                        onClick={() => handleFilterChange(filters.ACCELERATION)}
-                                    >
-                                        0-60mph
-                                    </FilterButton>
-                                    <FilterButton 
-                                        className={filter === filters.TORQUE ? 'active' : ''}
-                                        onClick={() => handleFilterChange(filters.TORQUE)}
-                                    >
-                                        Torque
-                                    </FilterButton>
+                                    {hideOnMobile && (
+                                        <React.Fragment>
+                                            <FilterButton 
+                                                className={filter === filters.BHP ? 'active' : ''}
+                                                onClick={() => handleFilterChange(filters.BHP)}
+                                            >
+                                                BHP
+                                            </FilterButton>
+                                            <FilterButton 
+                                                className={filter === filters.ACCELERATION ? 'active' : ''}
+                                                onClick={() => handleFilterChange(filters.ACCELERATION)}
+                                            >
+                                                0-60mph
+                                            </FilterButton>
+                                            <FilterButton 
+                                                className={filter === filters.TORQUE ? 'active' : ''}
+                                                onClick={() => handleFilterChange(filters.TORQUE)}
+                                            >
+                                                Torque
+                                            </FilterButton>
+                                        </React.Fragment>
+                                    )}
                                     <FilterButton 
                                         className={filter === filters.PRICE ? 'active' : ''}
                                         onClick={() => handleFilterChange(filters.PRICE)}

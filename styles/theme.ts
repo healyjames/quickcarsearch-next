@@ -14,6 +14,7 @@ export interface Theme extends DefaultTheme {
         foreground: string
         background: string
         backgroundAlt: string
+        backgroundAltAlt: string
     }
     font: {
         family: {
@@ -57,7 +58,8 @@ export const BrandConfig: Theme = {
         },
         foreground: '#FFFFFF',
         background: '#131416',
-        backgroundAlt: '#26282C'
+        backgroundAlt: '#26282C',
+        backgroundAltAlt: '#383C42'
     },
     font: {
         family: {
@@ -99,7 +101,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
         margin: 0;
     }
 
-    h1, h2, h3, h4, h5, h6, p, label, button, legend, input, li, td, th, span, div {
+    h1, h2, h3, h4, h5, h6, p, label, button, legend, input, li, td, th, span, div, select {
         font-family: ${props => props.theme.font.family.primary};
         color: ${props => props.theme.colors.foreground};
     }
