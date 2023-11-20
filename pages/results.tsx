@@ -241,8 +241,14 @@ const SortByDropdownLabel = styled.label`
     border-radius: ${props => props.theme.border.radius}rem ${props => props.theme.border.radius}rem 0 0;
 `
 
-const MobileResultItem = styled.div`
+const MobileResultItem = styled.div<{filter: boolean}>`
     margin-bottom: ${props => props.theme.core.margin}rem;
+
+    ${(props) => props.filter && (
+        `p {
+            color: ${props.theme.colors.brand}
+        }`
+    )}
 `
 
 const MobileResultItemHeading = styled.p`
@@ -442,19 +448,19 @@ const ResultsPage = () => {
                                                         }</ResultItem>
                                                     </React.Fragment> :
                                                     <ResultItem className='mobile'>
-                                                        <MobileResultItem>
+                                                        <MobileResultItem filter={filter === filters.BHP}>
                                                             <MobileResultItemHeading>BHP</MobileResultItemHeading>
                                                             <MobileResultItemText>{car.bhp}</MobileResultItemText>
                                                         </MobileResultItem>
-                                                        <MobileResultItem>
+                                                        <MobileResultItem filter={filter === filters.ACCELERATION}>
                                                             <MobileResultItemHeading>0-60mph</MobileResultItemHeading>
                                                             <MobileResultItemText>{car.acceleration}</MobileResultItemText>
                                                         </MobileResultItem>
-                                                        <MobileResultItem>
+                                                        <MobileResultItem filter={filter === filters.TORQUE}>
                                                             <MobileResultItemHeading>Torque</MobileResultItemHeading>
                                                             <MobileResultItemText>{car.torque}</MobileResultItemText>
                                                         </MobileResultItem>
-                                                        <MobileResultItem>
+                                                        <MobileResultItem filter={filter === filters.PRICE}>
                                                             <MobileResultItemHeading>Price</MobileResultItemHeading>
                                                             <MobileResultItemText>{
                                                                 parseFloat(car.avg_price).toLocaleString('en-GB', {
