@@ -317,17 +317,17 @@ const ResultsPage = () => {
               : parseFloat(b.acceleration) - parseFloat(a.acceleration),
       
           [filters.PRICE]: (a: any, b: any) =>
-          !sortOrderToggle
+          sortOrderToggle
               ? parseFloat(b.avg_price) - parseFloat(a.avg_price)
               : parseFloat(a.avg_price) - parseFloat(b.avg_price),
       
           [filters.BHP]: (a: any, b: any) =>
-          sortOrderToggle
+          !sortOrderToggle
               ? parseFloat(b.bhp) - parseFloat(a.bhp)
               : parseFloat(a.bhp) - parseFloat(b.bhp),
       
           [filters.TORQUE]: (a: any, b: any) =>
-          sortOrderToggle
+          !sortOrderToggle
               ? parseFloat(b.torque) - parseFloat(a.torque)
               : parseFloat(a.torque) - parseFloat(b.torque),
         }
