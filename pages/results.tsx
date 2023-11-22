@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import Head from 'next/head'
 
 import { RootState } from '../redux/types'
 
@@ -526,110 +525,7 @@ const ResultsPage = () => {
                     <NoResults cause={'data'} />
                 </React.Fragment>
             )}
-
-            {data && data.length > 0 ? (
-                <Container>
-                    <HeadingContainerOuter>
-                        <HeadingContainerInner>
-                            <Heading>
-                                <StyledH1>Here&apos;s what we found</StyledH1>
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    flexWrap: 'wrap',
-                                    gap: '8px'
-                                }}>
-                                    <p>Your budget: <span><strong>{formattedBudget}</strong></span></p>
-                                    <p>Number of results: <span><strong>{data.length}</strong></span></p>
-                                </div>
-                            </Heading>
-                        </HeadingContainerInner>
-                    </HeadingContainerOuter>
-
-                    <ResultsPageContainer>
-                        <React.Fragment>
-                            <ResultsContainer>
-                                <ResultsHead>
-                                    <div className='brand'>Filter - All matches</div>
-                                    <div className='bhp'>BHP</div>
-                                    <div className='acceleration'>0-60mph</div>
-                                    <div className='torque'>Torque</div>
-                                    <div className='price'>Price</div>
-                                </ResultsHead>
-                                <ResultsBody>
-                                    {data.slice(0, endIndex).map((car, index) => (
-                                        <li key={index + startIndex}>
-                                            <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
-                                                <ResultItem className='brand'>
-                                                    <div className='model_year'>{car.model_year}</div>
-                                                    <div className='make'>{car.make}</div>
-                                                    <div className='model'>{car.model} {car.variant}</div>
-                                                </ResultItem>
-                                                <ResultItem className='bhp'>{car.bhp}</ResultItem>
-                                                <ResultItem className='acceleration'>{car.acceleration}</ResultItem>
-                                                <ResultItem className='torque'>{car.torque}</ResultItem>
-                                                <ResultItem className='price'>{
-                                                    parseFloat(car.avg_price).toLocaleString('en-GB', {
-                                                        style: 'currency',
-                                                        currency: 'GBP',
-                                                        minimumFractionDigits: 0
-                                                    })
-                                                }</ResultItem>
-                                            </ResultContainerInner>
-                                        </li>
-                                    ))}
-                                </ResultsBody>
-                                {endIndex < data.length && (
-                                    <LoadMoreButton
-                                        onClick={() => {
-                                            setStartIndex(startIndex + batchSize);
-                                            setEndIndex(endIndex + batchSize);
-                                        }}>
-                                        <div>
-                                            <p>Load More</p>
-                                            <Image src="/assets/icons/chevron-down-solid.svg" alt="Chevron Down" width={12} height={12} />
-                                        </div>
-                                    </LoadMoreButton>
-                                )}
-                                {/* End of results message... */}
-                                {endIndex >= data.length && (
-                                    <LoadMoreButton
-                                        onClick={() => {
-                                            router.push('/')
-                                        }}>
-                                        <div style={{
-                                            display: 'flex',
-                                            flexDirection: 'row',
-                                            flexWrap: 'nowrap',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            gap: '4px'
-                                        }}>
-                                            <Image 
-                                                src="/assets/icons/chevron-down-solid.svg" 
-                                                alt="Chevron Down" 
-                                                width={12} 
-                                                height={12}
-                                                style={{
-                                                    willChange: 'transform',
-                                                    transform: 'rotate(90deg)'
-                                                }}
-                                                />
-                                            <p>End of results - Go home</p>
-                                        </div>
-                                    </LoadMoreButton>
-                                )}
-                            </ResultsContainer>
-                        </React.Fragment>
-                    </ResultsPageContainer>
-                </Container>
-                ) : budget && (
-                    <React.Fragment>
-                        <NoResults cause={'data'} />
-                    </React.Fragment>
-                )}
-            </Main>
-        </React.Fragment>
+        </Main>
     )
 }
 
