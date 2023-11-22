@@ -8,7 +8,7 @@ import Head from 'next/head'
 import { RootState } from '../redux/types'
 
 import { Main } from '../components/layout/Main'
-import { SlimHeader } from '../components/header/slim/SlimHeader'
+import { Header } from '../components/header/Header'
 import { Heading } from '../components/heading/Heading'
 import NoResults from '../components/no-results/NoResults'
 
@@ -337,16 +337,8 @@ const ResultsPage = () => {
     }      
 
     return (
-        <React.Fragment>
-            <Head>
-                <title>{
-                    !isNaN(parseFloat(budget)) || !formattedBudget
-                        ? `Results for your budget: ${formattedBudget}`
-                        : `Uh oh, no results!`
-                }</title>
-            </Head>
-            <Main page={"results"}>  
-                <SlimHeader id="home" logo="logo-icon-white.svg" acronym="logo-acronym-white.svg" />
+        <Main page={"results"}>  
+            <Header />
 
             {!budget && (
                 <NoResults cause={'budget'} />

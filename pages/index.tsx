@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Head from "next/head"
 
-import { Header } from "../components/header/Header"
+import { FeatureHeader } from "../components/header/Feature/FeatureHeader"
 import { Heading, HeadingH1, HeadingH2 } from "../components/heading/Heading"
 import { Form } from "../components/form/Form"
 import { HorizontalAd } from "../components/ads/HorizontalAd"
@@ -96,7 +96,7 @@ const Home = () => {
       <StyledMain>
         <StyledLayout>
           <HeaderWrapper>
-            <Header id="home" logo="logo-icon-white.svg" />
+            <FeatureHeader />
           </HeaderWrapper>
           <ContentWrapper>
             <Heading>
