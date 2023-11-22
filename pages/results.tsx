@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
@@ -336,196 +337,205 @@ const ResultsPage = () => {
     }      
 
     return (
-        <Main page={"results"}>  
-            <Header />
+        <React.Fragment>
+            <Head>
+                <title>{
+                    !isNaN(parseFloat(budget)) || !formattedBudget
+                        ? `Results for your budget: ${formattedBudget}`
+                        : `Uh oh, no results!`
+                }</title>
+            </Head>
+            <Main page={"results"}>  
+                <Header />
 
-            {!budget && (
-                <NoResults cause={'budget'} />
-            )}
+                {!budget && (
+                    <NoResults cause={'budget'} />
+                )}
 
-            {data && data.length > 0 ? (
-                <Container>
-                    <HeadingContainerOuter>
-                        <HeadingContainerInner>
-                            <Heading>
-                                <StyledH1>Here&apos;s what we found</StyledH1>
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    flexWrap: 'wrap',
-                                    gap: '8px'
-                                }}>
-                                    <p>Your budget: <span><strong>{formattedBudget}</strong></span></p>
-                                    <p>Number of results: <span><strong>{data.length}</strong></span></p>
-                                </div>
-                            </Heading>
-                        </HeadingContainerInner>
-                    </HeadingContainerOuter>
+                {data && data.length > 0 ? (
+                    <Container>
+                        <HeadingContainerOuter>
+                            <HeadingContainerInner>
+                                <Heading>
+                                    <StyledH1>Here&apos;s what we found</StyledH1>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        flexWrap: 'wrap',
+                                        gap: '8px'
+                                    }}>
+                                        <p>Your budget: <span><strong>{formattedBudget}</strong></span></p>
+                                        <p>Number of results: <span><strong>{data.length}</strong></span></p>
+                                    </div>
+                                </Heading>
+                            </HeadingContainerInner>
+                        </HeadingContainerOuter>
 
-                    <ResultsPageContainer>
-                        {!hideOnMobile && (
-                            <SortByDropdownContainer>
-                                <SortByDropdownLabel htmlFor='sortByDropdown'>
-                                    Sort by
-                                </SortByDropdownLabel>
-                                <select
-                                    value={filter}
-                                    onChange={(e) => handleFilterChange(
-                                        e.target.value as filters
-                                    )}
-                                    id='sortByDropdown'
-                                >
-                                    <option value={filters.BHP}>BHP</option>
-                                    <option value={filters.ACCELERATION}>0-60mph</option>
-                                    <option value={filters.TORQUE}>Torque</option>
-                                    <option value={filters.PRICE}>Price</option>
-                                </select>
-                            </SortByDropdownContainer>
-                        )}
-
-                        <React.Fragment>
-                            <ResultsContainer>
-                                <ResultsHead>
-                                    <FilterHeading 
-                                        className='brand'
+                        <ResultsPageContainer>
+                            {!hideOnMobile && (
+                                <SortByDropdownContainer>
+                                    <SortByDropdownLabel htmlFor='sortByDropdown'>
+                                        Sort by
+                                    </SortByDropdownLabel>
+                                    <select
+                                        value={filter}
+                                        onChange={(e) => handleFilterChange(
+                                            e.target.value as filters
+                                        )}
+                                        id='sortByDropdown'
                                     >
-                                        Make &amp; model
-                                    </FilterHeading>
-                                    {hideOnMobile ?
-                                        <React.Fragment>
-                                            <FilterButton 
-                                                className={filter === filters.BHP ? 'active' : ''}
-                                                onClick={() => handleFilterChange(filters.BHP)}
-                                            >
-                                                BHP
-                                            </FilterButton>
-                                            <FilterButton 
-                                                className={filter === filters.ACCELERATION ? 'active' : ''}
-                                                onClick={() => handleFilterChange(filters.ACCELERATION)}
-                                            >
-                                                0-60mph
-                                            </FilterButton>
-                                            <FilterButton 
-                                                className={filter === filters.TORQUE ? 'active' : ''}
-                                                onClick={() => handleFilterChange(filters.TORQUE)}
-                                            >
-                                                Torque
-                                            </FilterButton>
-                                            <FilterButton 
-                                                className={filter === filters.PRICE ? 'active' : ''}
-                                                onClick={() => handleFilterChange(filters.PRICE)}
-                                            >
-                                                Price
-                                            </FilterButton>
-                                        </React.Fragment> :
+                                        <option value={filters.BHP}>BHP</option>
+                                        <option value={filters.ACCELERATION}>0-60mph</option>
+                                        <option value={filters.TORQUE}>Torque</option>
+                                        <option value={filters.PRICE}>Price</option>
+                                    </select>
+                                </SortByDropdownContainer>
+                            )}
+
+                            <React.Fragment>
+                                <ResultsContainer>
+                                    <ResultsHead>
                                         <FilterHeading 
                                             className='brand'
                                         >
-                                            Details
+                                            Make &amp; model
                                         </FilterHeading>
-                                    }
-                                </ResultsHead>
-                                <ResultsBody>
-                                    {sortedData(data.slice(0, endIndex)).map((car: any, index: any) => (
-                                        <li key={index + startIndex}>
-                                            <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
-                                                <ResultItem className='brand'>
-                                                    <div className='model_year'>{car.model_year}</div>
-                                                    <div className='make'>{car.make}</div>
-                                                    <div className='model'>{car.model} {car.variant}</div>
-                                                </ResultItem>
-                                                {hideOnMobile ?
-                                                    <React.Fragment>
-                                                        <ResultItem className='bhp'>{car.bhp}</ResultItem>
-                                                        <ResultItem className='acceleration'>{car.acceleration}</ResultItem>
-                                                        <ResultItem className='torque'>{car.torque}</ResultItem>
-                                                        <ResultItem className='price'>{
-                                                            parseFloat(car.avg_price).toLocaleString('en-GB', {
-                                                                style: 'currency',
-                                                                currency: 'GBP',
-                                                                minimumFractionDigits: 0
-                                                            })
-                                                        }</ResultItem>
-                                                    </React.Fragment> :
-                                                    <ResultItem className='mobile'>
-                                                        <MobileResultItem filter={filter === filters.BHP}>
-                                                            <MobileResultItemHeading>BHP</MobileResultItemHeading>
-                                                            <MobileResultItemText>{car.bhp}</MobileResultItemText>
-                                                        </MobileResultItem>
-                                                        <MobileResultItem filter={filter === filters.ACCELERATION}>
-                                                            <MobileResultItemHeading>0-60mph</MobileResultItemHeading>
-                                                            <MobileResultItemText>{car.acceleration}</MobileResultItemText>
-                                                        </MobileResultItem>
-                                                        <MobileResultItem filter={filter === filters.TORQUE}>
-                                                            <MobileResultItemHeading>Torque</MobileResultItemHeading>
-                                                            <MobileResultItemText>{car.torque}</MobileResultItemText>
-                                                        </MobileResultItem>
-                                                        <MobileResultItem filter={filter === filters.PRICE}>
-                                                            <MobileResultItemHeading>Price</MobileResultItemHeading>
-                                                            <MobileResultItemText>{
+                                        {hideOnMobile ?
+                                            <React.Fragment>
+                                                <FilterButton 
+                                                    className={filter === filters.BHP ? 'active' : ''}
+                                                    onClick={() => handleFilterChange(filters.BHP)}
+                                                >
+                                                    BHP
+                                                </FilterButton>
+                                                <FilterButton 
+                                                    className={filter === filters.ACCELERATION ? 'active' : ''}
+                                                    onClick={() => handleFilterChange(filters.ACCELERATION)}
+                                                >
+                                                    0-60mph
+                                                </FilterButton>
+                                                <FilterButton 
+                                                    className={filter === filters.TORQUE ? 'active' : ''}
+                                                    onClick={() => handleFilterChange(filters.TORQUE)}
+                                                >
+                                                    Torque
+                                                </FilterButton>
+                                                <FilterButton 
+                                                    className={filter === filters.PRICE ? 'active' : ''}
+                                                    onClick={() => handleFilterChange(filters.PRICE)}
+                                                >
+                                                    Price
+                                                </FilterButton>
+                                            </React.Fragment> :
+                                            <FilterHeading 
+                                                className='brand'
+                                            >
+                                                Details
+                                            </FilterHeading>
+                                        }
+                                    </ResultsHead>
+                                    <ResultsBody>
+                                        {sortedData(data.slice(0, endIndex)).map((car: any, index: any) => (
+                                            <li key={index + startIndex}>
+                                                <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
+                                                    <ResultItem className='brand'>
+                                                        <div className='model_year'>{car.model_year}</div>
+                                                        <div className='make'>{car.make}</div>
+                                                        <div className='model'>{car.model} {car.variant}</div>
+                                                    </ResultItem>
+                                                    {hideOnMobile ?
+                                                        <React.Fragment>
+                                                            <ResultItem className='bhp'>{car.bhp}</ResultItem>
+                                                            <ResultItem className='acceleration'>{car.acceleration}</ResultItem>
+                                                            <ResultItem className='torque'>{car.torque}</ResultItem>
+                                                            <ResultItem className='price'>{
                                                                 parseFloat(car.avg_price).toLocaleString('en-GB', {
                                                                     style: 'currency',
                                                                     currency: 'GBP',
                                                                     minimumFractionDigits: 0
                                                                 })
-                                                            }</MobileResultItemText>
-                                                        </MobileResultItem>
-                                                    </ResultItem>
-                                                }
-                                            </ResultContainerInner>
-                                        </li>
-                                    ))}
-                                </ResultsBody>
-                                {endIndex < data.length && (
-                                    <LoadMoreButton
-                                        onClick={() => {
-                                            setStartIndex(startIndex + batchSize);
-                                            setEndIndex(endIndex + batchSize);
-                                        }}>
-                                        <div>
-                                            <p>Load More</p>
-                                            <Image src="/assets/icons/chevron-down-solid.svg" alt="Chevron Down" width={12} height={12} />
-                                        </div>
-                                    </LoadMoreButton>
-                                )}
-                                {/* End of results message... */}
-                                {endIndex >= data.length && (
-                                    <LoadMoreButton
-                                        onClick={() => {
-                                            router.push('/')
-                                        }}>
-                                        <div style={{
-                                            display: 'flex',
-                                            flexDirection: 'row',
-                                            flexWrap: 'nowrap',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            gap: '4px'
-                                        }}>
-                                            <Image 
-                                                src="/assets/icons/chevron-down-solid.svg" 
-                                                alt="Chevron Down" 
-                                                width={12} 
-                                                height={12}
-                                                style={{
-                                                    willChange: 'transform',
-                                                    transform: 'rotate(90deg)'
-                                                }}
-                                                 />
-                                            <p>End of results - Go home</p>
-                                        </div>
-                                    </LoadMoreButton>
-                                )}
-                            </ResultsContainer>
-                        </React.Fragment>
-                    </ResultsPageContainer>
-                </Container>
-            ) : budget && (
-                <React.Fragment>
-                    <NoResults cause={'data'} />
-                </React.Fragment>
-            )}
-        </Main>
+                                                            }</ResultItem>
+                                                        </React.Fragment> :
+                                                        <ResultItem className='mobile'>
+                                                            <MobileResultItem filter={filter === filters.BHP}>
+                                                                <MobileResultItemHeading>BHP</MobileResultItemHeading>
+                                                                <MobileResultItemText>{car.bhp}</MobileResultItemText>
+                                                            </MobileResultItem>
+                                                            <MobileResultItem filter={filter === filters.ACCELERATION}>
+                                                                <MobileResultItemHeading>0-60mph</MobileResultItemHeading>
+                                                                <MobileResultItemText>{car.acceleration}</MobileResultItemText>
+                                                            </MobileResultItem>
+                                                            <MobileResultItem filter={filter === filters.TORQUE}>
+                                                                <MobileResultItemHeading>Torque</MobileResultItemHeading>
+                                                                <MobileResultItemText>{car.torque}</MobileResultItemText>
+                                                            </MobileResultItem>
+                                                            <MobileResultItem filter={filter === filters.PRICE}>
+                                                                <MobileResultItemHeading>Price</MobileResultItemHeading>
+                                                                <MobileResultItemText>{
+                                                                    parseFloat(car.avg_price).toLocaleString('en-GB', {
+                                                                        style: 'currency',
+                                                                        currency: 'GBP',
+                                                                        minimumFractionDigits: 0
+                                                                    })
+                                                                }</MobileResultItemText>
+                                                            </MobileResultItem>
+                                                        </ResultItem>
+                                                    }
+                                                </ResultContainerInner>
+                                            </li>
+                                        ))}
+                                    </ResultsBody>
+                                    {endIndex < data.length && (
+                                        <LoadMoreButton
+                                            onClick={() => {
+                                                setStartIndex(startIndex + batchSize);
+                                                setEndIndex(endIndex + batchSize);
+                                            }}>
+                                            <div>
+                                                <p>Load More</p>
+                                                <Image src="/assets/icons/chevron-down-solid.svg" alt="Chevron Down" width={12} height={12} />
+                                            </div>
+                                        </LoadMoreButton>
+                                    )}
+                                    {/* End of results message... */}
+                                    {endIndex >= data.length && (
+                                        <LoadMoreButton
+                                            onClick={() => {
+                                                router.push('/')
+                                            }}>
+                                            <div style={{
+                                                display: 'flex',
+                                                flexDirection: 'row',
+                                                flexWrap: 'nowrap',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                gap: '4px'
+                                            }}>
+                                                <Image 
+                                                    src="/assets/icons/chevron-down-solid.svg" 
+                                                    alt="Chevron Down" 
+                                                    width={12} 
+                                                    height={12}
+                                                    style={{
+                                                        willChange: 'transform',
+                                                        transform: 'rotate(90deg)'
+                                                    }}
+                                                    />
+                                                <p>End of results - Go home</p>
+                                            </div>
+                                        </LoadMoreButton>
+                                    )}
+                                </ResultsContainer>
+                            </React.Fragment>
+                        </ResultsPageContainer>
+                    </Container>
+                ) : budget && (
+                    <React.Fragment>
+                        <NoResults cause={'data'} />
+                    </React.Fragment>
+                )}
+            </Main>
+        </React.Fragment>
     )
 }
 
