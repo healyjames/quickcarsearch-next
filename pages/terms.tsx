@@ -73,7 +73,7 @@ const Terms = () => {
                         <li>
                             <h3>Limitations of Liability</h3>
                             <OrderedList type="a">
-                                <li><p>{KEYS.BRAND} is provided "as is" and makes no representations or warranties of any kind, express or implied.</p></li>
+                                <li><p>{KEYS.BRAND} is provided &quot;as is&quot; and makes no representations or warranties of any kind, express or implied.</p></li>
                                 <li><p>{KEYS.BRAND} shall not be liable for any indirect, special, consequential, or incidental damages, including without limitation, lost profits or revenues, costs of replacement goods, loss or damage to data arising out of the use or inability to use this website.</p></li>
                             </OrderedList>
                         </li>

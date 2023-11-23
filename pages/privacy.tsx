@@ -45,7 +45,7 @@ const Privacy = () => {
                             <h3>How We Use Cookies</h3>
                             <OrderedList type="a">
                                 <li><p>The cookie used on {KEYS.BRAND} is for minor functionality, and it does not collect or store personal information.</p></li>
-                                <li><p>You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. However, this may prevent you from taking full advantage of the website's functionality.</p></li>
+                                <li><p>You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. However, this may prevent you from taking full advantage of the website&apos;s functionality.</p></li>
                                 <li><p><a style={{color: '#FFFFFF'}} href="/cookies">View full cookie policy here</a></p></li>
                             </OrderedList>
                         </li>

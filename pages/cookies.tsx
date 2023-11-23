@@ -52,7 +52,7 @@ const Cookies = () => {
                         <li>
                             <h3>Managing Your Cookie Preferences</h3>
                             <OrderedList type="a">
-                                <li><p>You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. However, this may prevent you from taking full advantage of the website's functionality.</p></li>
+                                <li><p>You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. However, this may prevent you from taking full advantage of the website&apos;s functionality.</p></li>
                                 <li><p>To manage your cookie preferences for third-party advertising, you can visit the opt-out pages of major ad networks, such as the Network Advertising Initiative (NAI) opt-out page or the Digital Advertising Alliance (DAA) opt-out page.</p></li>
                             </OrderedList>
                         </li>
