@@ -37,7 +37,7 @@ const Cookies = () => {
                             <h3>What Are Cookies?</h3>
                             <OrderedList type="a">
                                 <li><p>Cookies are small text files that are placed on your device when you visit a website. They are widely used to enhance your browsing experience, remember your preferences, and provide anonymous tracking data to website owners.</p></li>
-                                <li><p>You can use tools like this <a  style={{color: '#FFFFFF'}} href="https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm?pli=1" target="_blank">Cookie Editor chrome extension</a> to check what cookies are set on a website.</p></li>
+                                <li><p>You can use tools like this <a  style={{color: '#FFFFFF'}} href="https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm?pli=1" target="_blank" rel="noreferrer">Cookie Editor chrome extension</a> to check what cookies are set on a website.</p></li>
                             </OrderedList>
                         </li>
 

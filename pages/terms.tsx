@@ -51,7 +51,7 @@ const Terms = () => {
                             <OrderedList type="a">
                                 <li><p>{KEYS.BRAND} does not collect or store personal data from users.</p></li>
                                 <li><p>A cookie is set for minor functionality to enhance your experience. By using the website, you consent to the use of cookies in accordance with our privacy policy.</p></li>
-                                <li><p><a style={{color: '#FFFFFF'}} href="/privacy" target="_blank">View full privacy policy here</a> <a style={{color: '#FFFFFF'}} href="/cookies" target="_blank">View full cookie policy here</a></p></li>
+                                <li><p><a style={{color: '#FFFFFF'}} href="/privacy" target="_blank" rel="noreferrer">View full privacy policy here</a> <a style={{color: '#FFFFFF'}} href="/cookies" target="_blank" rel="noreferrer">View full cookie policy here</a></p></li>
                             </OrderedList>
                         </li>
 
