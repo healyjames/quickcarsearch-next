@@ -10,6 +10,7 @@ import { RootState } from '../redux/types'
 import { Main } from '../components/layout/Main'
 import { Header } from '../components/header/Header'
 import { Heading } from '../components/heading/Heading'
+import { Layout } from '../components/layout/Layout'
 import NoResults from '../components/no-results/NoResults'
 
 const ResultsContainer = styled.div`
@@ -48,24 +49,6 @@ const ResultItem = styled.span`
     .make {
         font-size: ${(props) => props.theme.font.size}rem;
         font-weight: bold;
-    }
-`
-
-const ResultsPageContainer = styled.div`
-    max-width: ${(props) => (props.theme.breakpoints.md - 25)}px;
-    margin: ${(props) => (props.theme.core.margin * 3)}rem auto;
-    padding: ${(props) => (props.theme.core.padding / 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem ${(props) => (props.theme.core.padding * 2)}rem;
-
-    @media (min-width: ${props => props.theme.breakpoints.md}px) {
-        max-width: ${(props) => (props.theme.breakpoints.md - 50)}px;
-    }
-
-    @media (min-width: ${props => props.theme.breakpoints.lg}px) {
-        max-width: ${(props) => (props.theme.breakpoints.lg - 100)}px;
-    }
-
-    @media (min-width: ${props => props.theme.breakpoints.xl}px) {
-        max-width: ${(props) => (props.theme.breakpoints.xl - 150)}px;
     }
 `
 
@@ -371,7 +354,7 @@ const ResultsPage = () => {
                             </HeadingContainerInner>
                         </HeadingContainerOuter>
 
-                        <ResultsPageContainer>
+                        <Layout>
                             {!hideOnMobile && (
                                 <SortByDropdownContainer>
                                     <SortByDropdownLabel htmlFor='sortByDropdown'>
@@ -527,7 +510,7 @@ const ResultsPage = () => {
                                     )}
                                 </ResultsContainer>
                             </React.Fragment>
-                        </ResultsPageContainer>
+                        </Layout>
                     </Container>
                 ) : budget && (
                     <React.Fragment>
