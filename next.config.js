@@ -19,21 +19,6 @@ const nextConfig = {
         destination: '/coming-soon',
         permanent: false,
       },
-      {
-        source: '/terms',
-        destination: '/coming-soon',
-        permanent: false,
-      },
-      {
-        source: '/privacy',
-        destination: '/coming-soon',
-        permanent: false,
-      },
-      {
-        source: '/cookies',
-        destination: '/coming-soon',
-        permanent: false,
-      },
     ]
   },
 }
