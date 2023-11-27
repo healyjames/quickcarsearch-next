@@ -259,6 +259,10 @@ const ResultsPage = () => {
     const data = useSelector((state: RootState) => state.data.data)
     const budget = useSelector((state: RootState) => state.budget.budget)
 
+    data?.sort((a, b) => parseFloat(a.acceleration) - parseFloat(b.acceleration))
+
+    console.log('DATA:', data)
+
     const [batchSize] = useState(8)
     const [startIndex, setStartIndex] = useState(0)
     const [endIndex, setEndIndex] = useState(batchSize)
@@ -418,7 +422,7 @@ const ResultsPage = () => {
                                         }
                                     </ResultsHead>
                                     <ResultsBody>
-                                        {sortedData(data.slice(0, endIndex)).map((car: any, index: any) => (
+                                        {sortedData(data).slice(0, endIndex).map((car: any, index: any) => (
                                             <li key={index + startIndex}>
                                                 <ResultContainerInner href="/" style={{textDecoration: 'none'}}>
                                                     <ResultItem className='brand'>
