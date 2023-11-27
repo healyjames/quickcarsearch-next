@@ -17,8 +17,6 @@ export const Form = () => {
     event.preventDefault()
     setIsLoading(true)
 
-    console.log(budget)
-
     try {
       setTimeout(() => {
         const filteredCars = data.results.filter((car) => parseFloat(car.avg_price) <= parseFloat(budget))
