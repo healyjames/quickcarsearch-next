@@ -48,7 +48,7 @@ export interface Theme extends DefaultTheme {
 export const BrandConfig: Theme = {
     colors: {
         brand: '#E8740C',
-        accent: '#0C2b3A',
+        accent: '#715AFF',
         neutrals: {
             darkest: '#303336',
             dark: '#565C61',

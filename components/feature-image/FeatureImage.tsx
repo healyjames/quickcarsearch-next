@@ -1,36 +1,10 @@
 import React, { useState } from 'react'
 
 import Image from 'next/image'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
+import ImageTag from '../image-tag/ImageTag'
 import ImageSkeleton from '../skeletons/image/ImageSkeleton'
-
-const ImageTag = styled.div`
-    z-index: 1;
-    position: absolute;
-    right: 1rem;
-
-    a span {
-        color: ${props => props.theme.colors.foreground};
-        border-bottom: ${props => props.theme.border.width}px ${props => props.theme.border.style} ${props => props.theme.colors.foreground};
-    }
-
-    a p i {
-        position: relative;
-        top: 4px;
-        color: ${props => props.theme.colors.foreground};
-        font-size: ${props => props.theme.font.size}rem;
-        margin-right: 5px;
-    }
-
-    a p {
-        opacity: 0.5;
-    }
-
-    a {
-        text-decoration: none;
-    }
-`
 
 const FeatureImageContainer = styled.div`
     display: block;
@@ -81,12 +55,10 @@ export const FeatureImage = () => {
     return(
         <div>
             <FeatureImageContainerOuter>
-                <ImageTag>
-                    <a href="https://unsplash.com/@martinkatler" target="_blank" rel="noreferrer">
-                        <p><i className="fas fa-camera"></i><span>Martin Katler</span></p>
-                    </a>
-                </ImageTag>
-
+                <ImageTag
+                    name={'Martin Katler'}
+                    url={'https://unsplash.com/@martinkatler'}
+                />
                 <FeatureImageContainer>
                     {imageLoaded ? null : <ImageSkeleton />}
                     <Image
