@@ -106,6 +106,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
         color: ${props => props.theme.colors.foreground};
     }
 
+    a {
+        font-family: ${props => props.theme.font.family.primary};
+        color: ${props => props.theme.colors.brand};
+    }
+
     form > fieldset {
         border: none;
         padding: 0;

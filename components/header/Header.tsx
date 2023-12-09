@@ -28,8 +28,21 @@ const AcronymContainer = styled.div`
     }
 `;
 
-const HomeContainer = styled.div`
-	background-color: ${(props) => props.theme.colors.brand};
+const HomeContainer = styled.div<{
+	transparentBackground?: boolean
+	backgroundColor?: string
+}>`
+	background-color: 
+		${(props) => props.transparentBackground 
+			? 'background-color: transparent;'
+			: props.backgroundColor
+				? props.backgroundColor
+				: props.theme.colors.brand
+		};
+	${(props) => props.transparentBackground && `
+		z-index: 2;
+		position: relative;
+	`}
 	padding: ${props => (props.theme.core.padding * 1.5).toFixed(2)}rem 0;
 `
 
@@ -41,7 +54,12 @@ const LogoContainer = styled.div`
 	align-items: center;
 `
 
-export const Header = () => {
+interface HeaderProps {
+	transparentBackground?: boolean
+	backgroundColor?: string
+}
+
+export const Header = (props: HeaderProps) => {
 	const [sidebarOpen, setSidebarOpen] = useState(false)
 
 	const toggleSidebar = () => {
@@ -49,7 +67,10 @@ export const Header = () => {
 	}
 	
 	return(
-		<HomeContainer>
+		<HomeContainer 
+			transparentBackground={props.transparentBackground}
+			backgroundColor={props.backgroundColor}
+		>
 			<HeaderContainerInner>
 			<NavOpenButton onClick={toggleSidebar}>
 				<Image
