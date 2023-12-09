@@ -48,7 +48,7 @@ export interface Theme extends DefaultTheme {
 export const BrandConfig: Theme = {
     colors: {
         brand: '#E8740C',
-        accent: '#0C2b3A',
+        accent: '#715AFF',
         neutrals: {
             darkest: '#303336',
             dark: '#565C61',
@@ -104,6 +104,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
     h1, h2, h3, h4, h5, h6, p, label, button, legend, input, li, td, th, span, div, select {
         font-family: ${props => props.theme.font.family.primary};
         color: ${props => props.theme.colors.foreground};
+    }
+
+    a {
+        font-family: ${props => props.theme.font.family.primary};
+        color: ${props => props.theme.colors.brand};
     }
 
     form > fieldset {
