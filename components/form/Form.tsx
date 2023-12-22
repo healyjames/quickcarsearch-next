@@ -27,7 +27,7 @@ export const Form = () => {
 
         router.push('/results')
         setIsLoading(false)
-      }, Math.floor(Math.random() * (1200 - 400 + 1) + 500))
+      }, Math.floor(Math.floor(Math.random() * 600) + 100))
       dispatch(setBudget(budget))
     } catch (error) {
       console.error(error)
