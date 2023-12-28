@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import Head from "next/head"
 
 import { FeatureHeader } from "../components/header/Feature/FeatureHeader"
-import { Heading, HeadingH1, HeadingH2 } from "../components/heading/Heading"
+import { Heading } from "../components/heading/Heading"
 import { Form } from "../components/form/Form"
-import { HorizontalAd } from "../components/ads/HorizontalAd"
+// import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { SocialIcons } from '../components/social-icons/SocialIcons'
 import { FloatingInfoBox } from '../components/info/floating-box/FloatingInfoBox'
