@@ -9,7 +9,7 @@ import { RootState } from '../redux/types'
 
 import { Main } from '../components/layout/Main'
 import { Header } from '../components/header/Header'
-import { Heading } from '../components/heading/Heading'
+import { AltHeading } from '../components/heading/AltHeading'
 import { Layout } from '../components/layout/Layout'
 import NoResults from '../components/no-results/NoResults'
 
@@ -100,11 +100,7 @@ export const HeadingContainerInner = styled.div`
     }
 `
 
-export const StyledH1 = styled.h1`
-    font-size: ${(props) => (props.theme.font.size * 3).toFixed(2)}rem;
-    font-weight: 100;
-    margin: 0;
-`
+
 
 const Container = styled.div`
     .bhp, .acceleration, .torque {
@@ -341,22 +337,18 @@ const ResultsPage = () => {
 
                 {data && data.length > 0 ? (
                     <Container>
-                        <HeadingContainerOuter>
-                            <HeadingContainerInner>
-                                <Heading>
-                                    <StyledH1>Here&apos;s what we found</StyledH1>
-                                    <div style={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        flexWrap: 'wrap',
-                                        gap: '8px'
-                                    }}>
-                                        <p>Your budget: <span><strong>{formattedBudget}</strong></span></p>
-                                        <p>Number of results: <span><strong>{data.length}</strong></span></p>
-                                    </div>
-                                </Heading>
-                            </HeadingContainerInner>
-                        </HeadingContainerOuter>
+                        <AltHeading>
+                            <h1>Here&apos;s what we found</h1>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                flexWrap: 'wrap',
+                                gap: '8px'
+                            }}>
+                                <p>Your budget: <span><strong>{formattedBudget}</strong></span></p>
+                                <p>Number of results: <span><strong>{data.length}</strong></span></p>
+                            </div>
+                        </AltHeading>
 
                         <Layout>
                             {!hideOnMobile && (

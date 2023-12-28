@@ -100,8 +100,8 @@ const Home = () => {
           </HeaderWrapper>
           <ContentWrapper>
             <Heading>
-              <HeadingH1>Find your next performance car <span>the easy way.</span></HeadingH1>
-              <HeadingH2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine &#128640;</HeadingH2>
+              <h1>Find your next performance car <span>the easy way.</span></h1>
+              <h2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine &#128640;</h2>
             </Heading>
             <Form />
             {/* <HorizontalAd /> */}

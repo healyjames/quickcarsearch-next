@@ -1,11 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading } from '../heading/Heading'
-import { 
-    HeadingContainerOuter, 
-    HeadingContainerInner, 
-    StyledH1 
-} from '../../pages/results'
+
+import { AltHeading } from '../heading/AltHeading'
 import { Button } from '../button/Button'
 
 const MessageContainer = styled.div`
@@ -27,13 +23,9 @@ const MessageContainer = styled.div`
 const DataErrorMessage = () => {
     return (
         <React.Fragment>
-            <HeadingContainerOuter>
-                <HeadingContainerInner>
-                    <Heading>
-                        <StyledH1>Look at you, cheap skate</StyledH1>
-                    </Heading>
-                </HeadingContainerInner>
-            </HeadingContainerOuter>
+            <AltHeading>
+                <h1>Look at you, cheap skate</h1>
+            </AltHeading>
             <MessageContainer>
                 <p>We have no results for a budget that low, too bad.</p>
                 <Button as="a" href="/" fullWidth={false} invertedColor={true}>Go home</Button>
@@ -46,15 +38,11 @@ const DataErrorMessage = () => {
 const BudgetErrorMessage = () => {
     return (
         <React.Fragment>
-            <HeadingContainerOuter>
-                <HeadingContainerInner>
-                    <Heading>
-                        <StyledH1>Well, this sucks...</StyledH1>
-                    </Heading>
-                </HeadingContainerInner>
-            </HeadingContainerOuter>
+            <AltHeading>
+                <h1>Well, this sucks...</h1>
+            </AltHeading>
             <MessageContainer>
-                <p>We can&apos;t retrieve any data for you, maybe try again? Idk</p>
+                <p>We can&apos;t retrieve any data for you, maybe try again? Idk...</p>
                 <Button as="a" href="/" fullWidth={false} invertedColor={true}>Go home</Button>
             </MessageContainer>
         </React.Fragment>
