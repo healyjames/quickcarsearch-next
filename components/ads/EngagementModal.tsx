@@ -69,7 +69,12 @@ const EngagementModal: React.FC = () => {
     <ModalOverlay onClick={handleOverlayClick}>
       <ModalContent>
         <CloseButton onClick={handleCloseModal}>Close</CloseButton>
-        <Image src="/imge.jpg" alt="Engagement Modal" />
+        <Image
+          src="/image.jpg"
+          alt="Engagement Modal"
+          width={250}
+          height={500}
+        />
       </ModalContent>
     </ModalOverlay>
   ) : null

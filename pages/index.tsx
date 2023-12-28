@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import Head from "next/head"
 
 import { FeatureHeader } from "../components/header/Feature/FeatureHeader"
-import { Heading, HeadingH1, HeadingH2 } from "../components/heading/Heading"
+import { Heading } from "../components/heading/Heading"
 import { Form } from "../components/form/Form"
-import { HorizontalAd } from "../components/ads/HorizontalAd"
+// import { HorizontalAd } from "../components/ads/HorizontalAd"
 import { FeatureImage } from "../components/feature-image/FeatureImage"
 import { SocialIcons } from '../components/social-icons/SocialIcons'
 import { FloatingInfoBox } from '../components/info/floating-box/FloatingInfoBox'
@@ -82,7 +82,7 @@ const Home = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Find the Fastest Car for your money - Online and Free</title>
+        <title>Quick Car Search &#128640; Find the Fastest Car for your money - Online and Free</title>
         <meta name="description" content="QuickCarSearch - The platform that makes it easy to find your next sports car, super car or performance car, all within your budget. Convinient and totally free." property="og:title" key="title" />
         <meta charSet="utf-8" property="og:charset" key="charset" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" property="og:edge" key="edge" />
@@ -100,11 +100,11 @@ const Home = () => {
           </HeaderWrapper>
           <ContentWrapper>
             <Heading>
-              <HeadingH1>Find your next performance car <span>the easy way.</span></HeadingH1>
-              <HeadingH2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine.</HeadingH2>
+              <h1>Find your next performance car <span>the easy way.</span></h1>
+              <h2>We make finding your next performance car simple with our easy-to-use, super quick, online search engine &#128640;</h2>
             </Heading>
             <Form />
-            <HorizontalAd />
+            {/* <HorizontalAd /> */}
           </ContentWrapper>
           <div>
             <SocialIcons />
