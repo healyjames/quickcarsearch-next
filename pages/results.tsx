@@ -40,7 +40,7 @@ const ResultContainerInner = styled.a`
     }
 `
 
-const ResultItem = styled.span`
+export const ResultItem = styled.span`
     margin: 0 ${(props) => props.theme.core.margin}rem;
 
     .model_year {
