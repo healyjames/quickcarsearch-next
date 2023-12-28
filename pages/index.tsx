@@ -27,6 +27,8 @@ const StyledLayout = styled.div`
 
     @media (min-width: ${props => props.theme.breakpoints.xl}px) {
       padding: 0 ${props => (props.theme.core.padding * 6).toFixed(2)}rem;
+      max-width: 450px;
+      margin: auto;
   }
 `
 
