@@ -82,7 +82,7 @@ const Home = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Find the Fastest Car for your money - Online and Free</title>
+        <title>Quick Car Search &#128640; Find the Fastest Car for your money - Online and Free</title>
         <meta name="description" content="QuickCarSearch - The platform that makes it easy to find your next sports car, super car or performance car, all within your budget. Convinient and totally free." property="og:title" key="title" />
         <meta charSet="utf-8" property="og:charset" key="charset" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" property="og:edge" key="edge" />
