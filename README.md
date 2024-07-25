@@ -43,15 +43,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Docker
 `docker build -t quickcarsearch:1.0.0 .`
-`docker run -p 3000:3000 -d quickcarsearch:1.0.0` 
-
-## Helm
-From  C:\WINDOWS\system32 in the command line run:
-
-
-
-
-aws ecr get-login-password --region eu-west-2 | docker -l "debug" login --username AWS --password-stdin 5873-3117-5786.dkr.ecr.eu-west-2.amazonaws.com
-AKIAYRP5KQVVATRZ4X2E
-
-docker login --username AWS --password-stdin $(aws ecr get-login-password --region eu-north-1) 5873-3117-5786.dkr.ecr.eu-north-1.amazonaws.com
+`docker run -p 3000:3000 -d quickcarsearch:1.0.0`
